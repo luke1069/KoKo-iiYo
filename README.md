@@ -1,14 +1,14 @@
-# README
-
-## KoKo-iiYo
+# KoKo-iiYo
 「URL:#」
 
-## 1:サイト概要
-### サイトテーマ
+## サイト概要
 本サイトは、バイク乗りにターゲットを絞ったSNSサイトです。<br>
 地図上に各ユーザーのオススメスポット・ルートを投稿し、共有することができます。<br>
 いいね！やコメント、ダイレクトメッセージなどの機能を用いて、<br>
 「KoKo-iiYo」で知り合ったライダーと繋がることも可能です。
+
+### サイトテーマ
+地図機能を活用したバイク専用のSNSサイト
 
 ### テーマを選んだ理由
 TwitterやInstagramなどSNSの普及によって、<br>
@@ -35,22 +35,16 @@ TwitterやInstagramなどSNSの普及によって、<br>
 * バイクに乗り始めた方で、ツーリング仲間を探す。
 などなど・・・
 
-## 2:開発概要
-### 設計書
+## 設計書
 「URL:」
-### チャレンジ要素一覧
+## チャレンジ要素一覧
 「URL:https://docs.google.com/spreadsheets/d/1_nZNw80gumIePZDsJxNmLKVKe0N7sDXWNf1KvhiccfE/edit#gid=1605662446」
-### 開発環境
+## 開発環境
 * OS:Linux(CentOS)
 * 言語:HTML,CSS,JavaScript,Ruby,SQL
 * フレームワーク:Ruby on Rails
 * JSライブラリ:jQuary
 * IDE:Cloud9
-### 使用素材
+## 使用素材
 
-## 3:制作時間
-|No.|タスク|目標時間(h)|制作時間(h)|
-|:---:|:---:|--:|--:|
-|td|td|td|td|
-|td|td|td|td|
-|合計|td|td|td|
+## 制作時間
