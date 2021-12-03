@@ -36,15 +36,18 @@ TwitterやInstagramなどSNSの普及によって、<br>
 などなど・・・
 
 ## 設計書
-「URL:」
+「URL:https://docs.google.com/spreadsheets/d/1mG_uRWKvemBcoTQ1kmyOQP8jVJ59rrqN/edit#gid=767290893」
+
 ## チャレンジ要素一覧
 「URL:https://docs.google.com/spreadsheets/d/1_nZNw80gumIePZDsJxNmLKVKe0N7sDXWNf1KvhiccfE/edit#gid=1605662446」
+
 ## 開発環境
 * OS:Linux(CentOS)
 * 言語:HTML,CSS,JavaScript,Ruby,SQL
 * フレームワーク:Ruby on Rails
 * JSライブラリ:jQuary
 * IDE:Cloud9
+
 ## 使用素材
 
 ## 制作時間
