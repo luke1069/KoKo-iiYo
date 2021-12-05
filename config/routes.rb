@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # googlemap_api関連
+  resources :maps, only: [:index]
+  get '/map_request', to: 'maps#map', as: 'map_request'
+
+  devise_for :users
+  root to: 'homes#top'
 end

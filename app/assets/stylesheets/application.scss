@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// header
+.logo {
+  font-size:30px;
+}
+
+.nav-item {
+  display:inline-block;
+}
+
+
+// sidebar
+.sidebar-icon {
+  height:25%;
+}
+
