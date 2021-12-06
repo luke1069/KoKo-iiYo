@@ -1,16 +1,17 @@
-<h2>gmap_test</h2>
+
+<p>おすすめスポット指定</p>
 
 <!-- 地名入力用のinputを追加 -->
 <input id="address" type="textbox" value="">
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="検索" onclick="codeAddress()">
-<div id='map'>
+<div id='map' class="m-2">
 </div>
 
 <style>
 #map{
-  height: 400px;
+  height: 75%;
 }
 </style>
 
@@ -29,7 +30,7 @@ function initMap(){
 
   map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 35.68134947200677, lng: 139.76712479808535},
-  zoom: 10
+  zoom: 13
   });
 }
 
@@ -55,4 +56,4 @@ function codeAddress(){
 }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=*&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZpnx_tuabVqj9Nu6_FkIJHYWE6l232Ak&callback=initMap" async defer></script>
