@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <%= render "homes/sidebar" %>
+
+    <div class="col-11 my-2 border mx-auto">
+      <h3 class="my-3"><%= @user.name %>さんのページ</h3>
+      <div class="row">
+        <div class="col-11 border mx-auto my-3 p-4">
+          <p>アカウント名：<%= @user.name %>さん</p>
+          <p>都道府県：<%= @user.prefecture %></p>
+          <p>自己紹介：<%= @user.introduction %></p>
+          <p>熟練度(自称)：<%= @user.skill %></p>
+          <p>マイバイク：<%= @user.mybike %></p>
+          <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:"200x200", class:"border" %>
+          <% if @user.id == current_user.id %>
+              <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary" do %>
+                <i class="fas fa-user-cog">プロフィール編集</i>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

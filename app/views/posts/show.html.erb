@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <%= render "homes/sidebar" %>
+
+    <div class="col-11 my-2 border mx-auto">
+      <h3>投稿詳細</h3>
+      <div class="row">
+
+        <div class="col-5 m-2 border">
+          <%= @post.title %>
+          <%= @post.body %>
+        </div>
+
+        <div class="col-6 my-2 mx-auto border" >
+          <%= render "maps/index" %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

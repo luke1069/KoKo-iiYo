@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+
   def index
+    @posts = Post.all
   end
 
   def new
@@ -8,8 +10,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     @post.save
-    redirect_to post_path(@post.id)
+    redirect_to root_path
   end
 
   def show

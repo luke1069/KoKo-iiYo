@@ -10,7 +10,18 @@
   <div class="sidebar-icon w-100 fas fa-star border py-5 my-2">
     お気に入り
   </div>
-  <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
-    マイページ
-  </div>
+  <% if user_signed_in? %>
+    <%= link_to user_path(current_user) do %>
+      <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
+        マイページ
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_registration_path do %>
+      <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
+        マイページ
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
