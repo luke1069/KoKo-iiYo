@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 
   resources :maps, only: [:index]
-  resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy ]
+  resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy ] do
+    resource :favorites, only: [:create, :destroy]
+  end
   # get '/map_request', to: 'maps#map', as: 'map_request'
 
 
