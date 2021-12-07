@@ -11,12 +11,14 @@
           <%= form_with model:@post, local: true do |f| %>
             <p>タイトル</p>
             <%= f.text_field :title %>
+            <p>スポットの都道府県</p>
+            <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
             <p>おすすめポイント</p>
             <%= f.text_area :body %>
             <p>写真選択</p>
             <%= f.attachment_field :image %>
             <div class="my-5">
-              <%= f.submit "投稿！" %>
+              <%= f.submit "投稿" %>
             </div>
           <% end %>
         </div>

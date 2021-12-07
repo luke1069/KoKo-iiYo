@@ -8,18 +8,42 @@
       <div class="row">
 
         <% @posts.each do |post| %>
-          <div class="col-5 m-2 border">
-            <%= post.title %>
-            <%= post.body %>
-          </div>
-  
-          <div class="col-6 my-2 mx-auto border" >
-            <%= render "maps/index" %>
+          <div class="container-fluid m-2 border">
+            <div class="row">
+              <div class="col-5 m-2 p-2 border">
+                <div class="row">
+                  <div class="col-4">
+                    <%= attachment_image_tag post.user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", size:"150x150", class:"border" %>
+                    <p><%= post.user.name %>さん</p>
+                    <% if post.user == current_user %>
+                      <%= link_to "投稿編集", edit_post_path(post), class:"btn btn-outline-secondary"%>
+                    <% end %>
+                  </div>
+                  <div class="col-7 text-left">
+                    <p><strong>タイトル：<%= post.title %></strong></p>
+                    <p>スポットの都道府県：<%= post.post_prefecture %></p>
+                    <p>おすすめポイント：<%= post.body %></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 my-2 mx-auto border" >
+                <div class="row p-2">
+                  <div class="col-6">
+                    <%= attachment_image_tag post, :image, :fill, 300, 300, fallback: "no_image.jpg", size:"300x300", class:"border" %>
+                  </div>
+                  <div class="col-6 text-center border">
+                    googlemap表示
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         <% end %>
 
       </div>
     </div>
-    
+
   </div>
 </div>

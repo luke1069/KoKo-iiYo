@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <%= render "homes/sidebar" %>
+
+    <div class="col-6 my-2 border mx-auto text-center p-5">
+      <p>退会の確認画面になります。</p>
+      <br>
+      <p>退会される場合は、「退会」をクリックして下さい。</p>
+      <br>
+      <br>
+      <%= link_to "退会", withdraw_path(@user), method: :patch, class:"btn btn-outline-secondary"%>
+      <%= link_to "戻る", user_path(@user), class:"btn btn-outline-secondary ml-3" %>
+    </div>
+
+  </div>
+</div>

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:id])
-    @user.update(is_valid: false)
+    @user.destroy
     reset_session
     flash[:notice] = "退会処理を完了しました。"
     redirect_to root_path
