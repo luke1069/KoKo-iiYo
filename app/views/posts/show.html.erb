@@ -7,13 +7,29 @@
       <h3>投稿詳細</h3>
       <div class="row">
 
-        <div class="col-5 m-2 border">
-          <%= @post.title %>
-          <%= @post.body %>
+        <div class="col-11 m-2 p-2 border">
+          <div>
+            <%= attachment_image_tag @post, :image, :fill, 400, 400, fallback: "no_image.jpg", size:"400x400", class:"border" %>
+          </div>
+          <div>
+            <%= render "favorites/favorite", post: @post %>
+          </div>
+          <strong>タイトル</strong><br>
+          <%= @post.title %><br><br>
+          <strong>場所</strong><br>
+          <%= @post.post_prefecture %><br><br>
+          <strong>おすすめポイント</strong><br>
+          <%= @post.body %><br><br>
         </div>
 
-        <div class="col-6 my-2 mx-auto border" >
-          <%= render "maps/index" %>
+      </div>
+      <h3>コメント一覧</h3>
+      <p>コメント数：<%= @post.comments.count %></p>
+      <div class="row">
+
+        <div class="col-11 m-2 border">
+          <% @post.comments.each do |comment| %>
+          <% end %>
         </div>
 
       </div>
