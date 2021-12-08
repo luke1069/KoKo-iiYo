@@ -1,0 +1,19 @@
+<%= render "homes/sidebar" %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-1" style="height: 1px;"></div>
+
+    <div class="col-11 my-2 border mx-auto">
+      <% @entries.each do |e| %>
+        <h3><%= e.user.name %>さんとのダイレクトメッセージ</h3>
+      <% end %>
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
