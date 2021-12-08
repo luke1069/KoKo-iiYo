@@ -26,13 +26,13 @@
           <% unless @user.id == current_user.id %>
             <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
               <% if @haveRoom == true %>
-                <%= link_to "DM画面へ", room_path(@roomId) %>
+                <%= link_to "DM画面", room_path(@roomId), class:"btn btn-outline-secondary my-2" %>
               <% else %>
                 <%= form_with model:@room, local: true do |f| %>
                   <%= fields_for @entry do |e| %>
                     <%= e.hidden_field :user_id, value: @user.id %>
                   <% end %>
-                  <%= f.submit "DM画面へ" %>
+                  <%= f.submit "DM画面", class:"btn btn-outline-secondary my-2" %>
                 <% end %>
               <% end %>
             <% end %>
