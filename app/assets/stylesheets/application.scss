@@ -19,6 +19,9 @@
 @import 'font-awesome';
 
 // header
+body {
+  padding-top: 50px;
+}
 .logo {
   font-size:30px;
 }
@@ -31,5 +34,10 @@
 // sidebar
 .sidebar-icon {
   height:23%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
 }
 

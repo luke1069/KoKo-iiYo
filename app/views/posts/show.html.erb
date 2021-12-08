@@ -1,9 +1,11 @@
+<%= render "homes/sidebar" %>
+
 <div class="container-fluid">
   <div class="row">
 
-    <%= render "homes/sidebar" %>
+    <div class="col-1" style="height: 1px;"></div>
 
-    <div class="col-11 my-2 border mx-auto">
+    <div class="col-11 my-2 border mr-auto">
       <h3>投稿詳細</h3>
       <div class="row">
 
@@ -11,9 +13,9 @@
           <div>
             <%= attachment_image_tag @post, :image, :fill, 400, 400, fallback: "no_image.jpg", size:"400x400", class:"border" %>
           </div>
-          <div>
+          <span id="favorite_buttons_<%= @post.id %>">
             <%= render "favorites/favorite", post: @post %>
-          </div>
+          </span>
           <strong>タイトル</strong><br>
           <%= @post.title %><br><br>
           <strong>場所</strong><br>
@@ -24,12 +26,10 @@
 
       </div>
       <h3>コメント一覧</h3>
-      <p>コメント数：<%= @post.comments.count %></p>
       <div class="row">
 
-        <div class="col-11 m-2 border">
-          <% @post.comments.each do |comment| %>
-          <% end %>
+        <div class="col-11 m-2 border p-2 comment_area">
+          <%= render "comments/comments", post: @post, comment: @comment %>
         </div>
 
       </div>

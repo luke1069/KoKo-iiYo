@@ -1,0 +1,41 @@
+<%= render "homes/sidebar" %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-1" style="height: 1px;"></div>
+
+    <div class="col-11 my-2 border mx-auto">
+      <h3><%= @user.name %>さんのフォロワー</h3>
+      <% if @user.followers.exists? %>
+        <table class="table table-hover">
+          <% @users.each do |user|%>
+          <tr>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50", class:"border" %>
+                <%= user.name %>さん
+              <% end %>
+            </td>
+            <td>
+              投稿数：<%= user.posts.count %>
+            </td>
+            <td>
+              フォロー：<%= user.followings.count %>
+            </td>
+            <td>
+              フォロワー：<%= user.followers.count %>
+            </td>
+            <td>
+              <%= render "relationships/follow", user: user %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p>ユーザーはいません。</p>
+      <% end %>
+    </div>
+
+  </div>
+</div>

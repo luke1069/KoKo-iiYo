@@ -1,7 +1,9 @@
+<%= render "homes/sidebar" %>
+
 <div class="container-fluid">
   <div class="row">
 
-    <%= render "homes/sidebar" %>
+    <div class="col-1" style="height: 1px;"></div>
 
     <div class="col-11 my-2 border mx-auto">
       <h3>新着の投稿一覧</h3>
@@ -20,6 +22,10 @@
 
                     <span id="favorite_buttons_<%= post.id %>">
                       <%= render "favorites/favorite", post: post %>
+                    </span>
+
+                    <span>
+                      コメント数：<%= post.comments.count %>
                     </span>
 
                     <% if post.user == current_user %>
