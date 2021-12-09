@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(:id)
+    @message = Message.find(params[:id])
     @message.destroy
     redirect_to room_path(@message.room_id)
   end
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:user_id, :room_id, :message).merge(user_id: current_user.id)
+    params.require(:message).permit(:user_id, :room_id, :content).merge(user_id: current_user.id)
   end
 
 end
