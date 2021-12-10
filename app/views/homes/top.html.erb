@@ -4,39 +4,98 @@
   <div class="row">
     <div class="col-1" style="height: 1px;"></div>
     <div class="col-11 my-2 border">
-      <div class="introduction w-100 text-center" style="height: 300px;">
+      <div class="introduction w-100 text-center" style="height: 30px;">
         ようこそ！バイク専用SNSサイトの「<i class="fas fa-biking"></i>KoKo-iiYo」へ！<br>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-1" style="height: 1px;"></div>
-    <div class="col-11 my-2 border">
-      <div class="row">
-        <% if user_signed_in? %>
-          <%= link_to posts_path do %>
-            <h3>新着の投稿一覧</h3>
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path do %>
-            <h3>新規の投稿一覧</h3>
-          <% end %>
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col-1" style="height: 1px;"></div>
+      <div class="col-11 my-2 p-2 border">
+        <%= link_to posts_path do %>
+          <h3>新着の投稿一覧</h3>
         <% end %>
-      </div>
+        <div class="row">
+          <% @posts_new.first(5).each do |post| %>
+            <div class="col-2 mx-auto p-2 w-100 border">
+              <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class:"border" %>
+              <% end %>
+              <div id="star-rate-<%= post.id %>"></div>
+              <script>
+                $('#star-rate-<%= post.id %>').empty();
+                $('#star-rate-<%= post.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= post.rate %>,
+                });
+              </script>
+              投稿：<%= post.user.name %>さん
+              <br>
+              <strong>タイトル：
+                <%= link_to post_path(post) do %>
+                  <%= post.title %>
+                <% end %>
+              </strong>
+              (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
+              <br>
+              場所：<%= post.post_prefecture %>
+              <span class="ml-3">コメント数：<%= post.comments.count %></span>
+              <span id="favorite_buttons_<%= post.id %>">
+                <%= render "favorites/favorite", post: post %>
+              </span>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="row">
-        <% if user_signed_in? %>
-          <%= link_to ranking_index_path do %>
-            <h3>人気の投稿一覧</h3>
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path do %>
-            <h3>人気の投稿一覧</h3>
-          <% end %>
+        <%= link_to ranking_index_path do %>
+          <h3 class="mt-5">人気の投稿一覧</h3>
         <% end %>
+        <div class="row">
+          <% @posts_favorite.first(5).each do |post| %>
+            <div class="col-2 mx-auto p-2 w-100 border">
+              <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class:"border" %>
+              <% end %>
+              <div id="star-rate2-<%= post.id %>"></div>
+              <script>
+                $('#star-rate2-<%= post.id %>').empty();
+                $('#star-rate2-<%= post.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= post.rate %>,
+                });
+              </script>
+              投稿：<%= post.user.name %>さん
+              <br>
+              <strong>タイトル：
+                <%= link_to post_path(post) do %>
+                  <%= post.title %>
+                <% end %>
+              </strong>
+              (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
+              <br>
+              場所：<%= post.post_prefecture %>
+              <span class="ml-3">コメント数：<%= post.comments.count %></span>
+              <span id="favorite_buttons2_<%= post.id %>">
+                <%= render "favorites/favorite", post: post %>
+              </span>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
+  <% else %>
+  <% end %>
 
-  </div>
 </div>
