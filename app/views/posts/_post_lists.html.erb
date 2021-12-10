@@ -15,11 +15,14 @@
               <span id="favorite_buttons_<%= post.id %>">
                 <%= render "favorites/favorite", post: post %>
               </span>
-
               <span>
-                コメント数：<%= post.comments.count %>
+                <i class="far fa-eye ml-3"></i><%= post.impressions_counts.count %>
               </span>
-            
+              <br>
+              <span>
+                コメント：<%= post.comments.count %>
+              </span>
+
             </div>
             <div class="col-7 text-left">
               <p><strong>タイトル：

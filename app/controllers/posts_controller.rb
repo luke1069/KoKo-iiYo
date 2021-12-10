@@ -36,6 +36,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    unless ImpressionsCount.find_by(user_id: current_user.id, post_id: @post.id)
+      current_user.impressions_counts.create(post_id: @post.id)
+    end
     @comment = Comment.new
   end
 

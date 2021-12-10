@@ -46,10 +46,15 @@
               (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
               <br>
               場所：<%= post.post_prefecture %>
-              <span class="ml-3">コメント数：<%= post.comments.count %></span>
-              <span id="favorite_buttons_<%= post.id %>">
-                <%= render "favorites/favorite", post: post %>
-              </span>
+              <div>
+                <span id="favorite_buttons_<%= post.id %>">
+                  <%= render "favorites/favorite", post: post %>
+                </span>
+                <span>
+                  <i class="far fa-eye ml-3"></i><%= post.impressions_counts.count %>
+                </span>
+              </div>
+              <span>コメント数：<%= post.comments.count %></span>
             </div>
           <% end %>
         </div>
@@ -86,10 +91,15 @@
               (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
               <br>
               場所：<%= post.post_prefecture %>
-              <span class="ml-3">コメント数：<%= post.comments.count %></span>
-              <span id="favorite_buttons2_<%= post.id %>">
-                <%= render "favorites/favorite", post: post %>
-              </span>
+              <div>
+                <span id="favorite_buttons_<%= post.id %>">
+                  <%= render "favorites/favorite", post: post %>
+                </span>
+                <span>
+                  <i class="far fa-eye ml-3"></i><%= post.impressions_counts.count %>
+                </span>
+              </div>
+              <span>コメント数：<%= post.comments.count %></span>
             </div>
           <% end %>
         </div>

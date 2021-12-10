@@ -13,9 +13,14 @@
           <div>
             <%= attachment_image_tag @post, :image, :fill, 400, 400, fallback: "no_image.jpg", size:"400x400", class:"border" %>
           </div>
-          <span id="favorite_buttons_<%= @post.id %>">
-            <%= render "favorites/favorite", post: @post %>
-          </span>
+          <div class="my-3">
+            <span id="favorite_buttons_<%= @post.id %>">
+              <%= render "favorites/favorite", post: @post %>
+            </span>
+            <span>
+              <i class="far fa-eye ml-3"></i><%= @post.impressions_counts.count %>
+            </span>
+          </div>
           <strong>タイトル</strong><br>
           <%= @post.title %><br><br>
           <strong>おすすめ度</strong>
