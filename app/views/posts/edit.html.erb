@@ -11,18 +11,35 @@
 
         <div class="col-3 m-2 border">
           <%= form_with model:@post, local: true do |f| %>
-            <p>タイトル</p>
+            <p class="mb-2">タイトル</p>
             <%= f.text_field :title, placeholder: @post.title %>
-            <p>スポットの都道府県</p>
+             <!--評価機能-->
+            <p class="mb-2 mt-4">評価</p>
+            <span id="edit-star-<%= @post.id %>" class="ml-3">
+              <%= f.hidden_field :rate, id: :review_star %>
+            </span>
+            <script>
+              $('#edit-star-<%= @post.id %>').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                score: '<%= @post.rate %>',
+                scoreName: 'post[rate]',
+                half: true,
+              });
+            </script>
+            <!--ここまで-->
+            <p class="mb-2 mt-4">スポットの都道府県</p>
             <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, placeholder: @post.post_prefecture, class:"mb-3" %>
-            <p>おすすめポイント</p>
+            <p class="mb-2 mt-4">おすすめポイント</p>
             <%= f.text_area :body, placeholder: @post.body %>
-            <p>写真選択</p>
+            <p class="mb-2 mt-4">写真選択</p>
             <%= f.attachment_field :image %>
             <%= attachment_image_tag @post, :image, :fill, 300, 300, fallback: "no_image.jpg", size:"300x300", class:"my-2 border" %>
-            <div class="my-5">
-              <%= f.submit "編集", class:"btn btn-outline-secondary my-2" %>
-              <%= link_to "削除", post_path(@post), method: :delete, class:"btn btn-outline-secondary ml-3" %>
+            <div class="my-5 px-auto">
+              <%= f.submit "更新", class:"btn btn-outline-secondary my-2" %>
+              <%= link_to "削除", post_path(@post), method: :delete, class:"btn btn-outline-danger ml-3" %>
             </div>
           <% end %>
         </div>

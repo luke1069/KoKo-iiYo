@@ -3,16 +3,39 @@
     <br><br>
     <p>投稿検索</p>
   </div>
-  <%= link_to new_post_path do %>
-    <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
-      <br><br>
-      <p>新規投稿</p>
-    </div>
+
+  <% if user_signed_in? %>
+    <%= link_to new_post_path do %>
+      <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
+        <br><br>
+        <p>新規投稿</p>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+      <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
+        <br><br>
+        <p>新規投稿</p>
+      </div>
+    <% end %>
   <% end %>
-  <div class="sidebar-icon w-100 fas fa-star border py-5 my-2">
-    <br><br>
-    <p>お気に入り</p>
-  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to favorites_index_path(current_user) do %>
+      <div class="sidebar-icon w-100 fas fa-star border py-5 my-2">
+        <br><br>
+        <p>お気に入り</p>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+      <div class="sidebar-icon w-100 fas fa-star border py-5 my-2">
+        <br><br>
+        <p>お気に入り</p>
+      </div>
+    <% end %>
+  <% end %>
+
   <% if user_signed_in? %>
     <%= link_to user_path(current_user) do %>
       <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
@@ -21,7 +44,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= link_to new_user_registration_path do %>
+    <%= link_to new_user_session_path do %>
       <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
         <br><br>
         <p>マイページ</p>

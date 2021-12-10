@@ -2,27 +2,41 @@
 
 <div class="container-fluid">
   <div class="row">
-
     <div class="col-1" style="height: 1px;"></div>
-
     <div class="col-11 my-2 border">
-
-      <div class="row">
-        <div class="introduction w-100 text-center">
-          ようこそ！バイク専用SNSサイトの「<i class="fas fa-biking"></i>KoKo-iiYo」へ！<br>
-        </div>
+      <div class="introduction w-100 text-center" style="height: 300px;">
+        ようこそ！バイク専用SNSサイトの「<i class="fas fa-biking"></i>KoKo-iiYo」へ！<br>
       </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-1" style="height: 1px;"></div>
+    <div class="col-11 my-2 border">
       <div class="row">
-        <%= link_to posts_path do %>
-          <h3>新着の投稿一覧</h3>
+        <% if user_signed_in? %>
+          <%= link_to posts_path do %>
+            <h3>新着の投稿一覧</h3>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <h3>新規の投稿一覧</h3>
+          <% end %>
         <% end %>
       </div>
 
       <div class="row">
-        <h3>人気の投稿一覧</h3>
+        <% if user_signed_in? %>
+          <%= link_to ranking_index_path do %>
+            <h3>人気の投稿一覧</h3>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <h3>人気の投稿一覧</h3>
+          <% end %>
+        <% end %>
       </div>
-
     </div>
+
   </div>
 </div>

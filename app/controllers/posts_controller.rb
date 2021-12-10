@@ -1,7 +1,23 @@
 class PostsController < ApplicationController
 
+# 新着投稿一覧
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
+  end
+
+# 人気投稿一覧
+  def ranking_index
+    @posts = Post.includes(:favorites).
+    sort { |a,b|
+      b.favorites.count <=>
+      a.favorites.count
+    }
+  end
+
+# お気に入り投稿一覧
+  def favorites_index
+    favorites = Favorite.where(user_id: current_user.id).order(id: "DESC").pluck(:post_id)
+    @posts = Post.find(favorites)
   end
 
   def new
@@ -11,8 +27,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -47,7 +66,7 @@ class PostsController < ApplicationController
  private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :post_prefecture)
+    params.require(:post).permit(:title, :body, :image, :post_prefecture, :rate)
   end
 
 end

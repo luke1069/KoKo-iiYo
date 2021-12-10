@@ -18,10 +18,28 @@
           </span>
           <strong>タイトル</strong><br>
           <%= @post.title %><br><br>
+          <strong>おすすめ度</strong>
+          <div id="star-rate-<%= @post.id %>"></div>
+            <script>
+              $('#star-rate-<%= @post.id %>').empty();
+              $('#star-rate-<%= @post.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= @post.rate %>,
+              });
+            </script>
+          <br>
           <strong>場所</strong><br>
           <%= @post.post_prefecture %><br><br>
           <strong>おすすめポイント</strong><br>
           <%= @post.body %><br><br>
+          <% if @post.user == current_user %>
+            <%= link_to "編集", edit_post_path(@post), class:"btn btn-outline-secondary"%>
+          <% end %>
         </div>
 
       </div>

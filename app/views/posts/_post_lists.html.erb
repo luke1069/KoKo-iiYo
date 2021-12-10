@@ -1,0 +1,68 @@
+
+<div class="row">
+
+  <% posts.each do |post| %>
+    <div class="container-fluid m-2 border">
+      <div class="row">
+        <div class="col-5 m-2 p-2 border">
+          <div class="row">
+            <div class="col-4">
+              <%= attachment_image_tag post.user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", size:"150x150", class:"border" %>
+              <%= link_to user_path(post.user) do %>
+                <p><%= post.user.name %>さん</p>
+              <% end %>
+
+              <span id="favorite_buttons_<%= post.id %>">
+                <%= render "favorites/favorite", post: post %>
+              </span>
+
+              <span>
+                コメント数：<%= post.comments.count %>
+              </span>
+            
+            </div>
+            <div class="col-7 text-left">
+              <p><strong>タイトル：
+                <%= link_to post_path(post) do %>
+                  <%= post.title %>
+                <% end %></strong>
+                (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
+              </p>
+              <div id="star-rate-<%= post.id %>"></div>
+              <script>
+                $('#star-rate-<%= post.id %>').empty();
+                $('#star-rate-<%= post.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= post.rate %>,
+                });
+              </script>
+              <br>
+              <p>場所：<%= post.post_prefecture %></p>
+              <p>おすすめポイント：<%= post.body %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 my-2 mx-auto border" >
+          <div class="row p-2">
+            <div class="col-6">
+              <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, :fill, 300, 300, fallback: "no_image.jpg", size:"300x300", class:"border" %>
+              <% end %>
+            </div>
+            <div class="col-6 text-center border">
+              googlemap表示
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
