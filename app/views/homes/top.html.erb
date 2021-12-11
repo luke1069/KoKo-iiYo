@@ -5,7 +5,7 @@
     <div class="col-1" style="height: 1px;"></div>
     <div class="col-11 my-2 border">
       <div class="introduction w-100 text-center" style="height: 30px;">
-        ようこそ！バイク専用SNSサイトの「<i class="fas fa-biking"></i>KoKo-iiYo」へ！<br>
+        ようこそ！バイク専用SNSサイトの「KoKo-iiYo」へ！
       </div>
     </div>
   </div>
@@ -36,7 +36,9 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= post.user.name %>さん
+              投稿：<%= link_to user_path(post) do %>
+                <%= post.user.name %>さん
+              <% end %>
               <br>
               <strong>タイトル：
                 <%= link_to post_path(post) do %>
@@ -81,7 +83,9 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= post.user.name %>さん
+              投稿：<%= link_to user_path(post) do %>
+                <%= post.user.name %>さん
+              <% end %>
               <br>
               <strong>タイトル：
                 <%= link_to post_path(post) do %>
