@@ -18,8 +18,8 @@
  * version: 3.1.1
  *
  */
-
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
+// $(document).ready(function () {
   $("#images").skippr({
     // スライドショーの変化 ("fade" or "slide")
     transition : 'slide',
@@ -44,6 +44,7 @@ $(document).ready(function () {
   });
 });
 
+$(document).on('turbolinks:load', function() {
 $(function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
@@ -819,3 +820,4 @@ $(function() {
     return Raty;
   })();
 }));
+});
