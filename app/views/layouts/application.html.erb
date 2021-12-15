@@ -37,15 +37,21 @@
 
     <%= yield %>
 
-    <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <p>CopyRight KoKo-iiYo.inc</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <!--<footer>-->
+    <!--  <div class="container mt-5">-->
+    <!--    <div class="row">-->
+    <!--      <div class="mx-auto">-->
+    <!--        <p>CopyRight KoKo-iiYo.inc</p>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</footer>-->
+
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('top_back.png'), data: {"turbolinks"=>false}, class:"top_back" %>
+      </a>
+    </span>
 
   </body>
 </html>

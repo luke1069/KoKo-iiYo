@@ -3,9 +3,34 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-1" style="height: 1px;"></div>
-    <div class="col-11 my-2 border">
-      <div class="introduction w-100 text-center" style="height: 30px;">
-        ようこそ！バイク専用SNSサイトの「KoKo-iiYo」へ！
+    <div class="top col-11 my-2 border">
+      <div id="box">
+        <div id="images">
+          <div class="image1">
+          </div>
+          <div class="image2">
+          </div>
+          <div class="image3">
+          </div>
+          <div class="image4">
+          </div>
+          <div class="image5">
+          </div>
+        </div>
+      </div>
+      <div class="introduction text-center text-light">
+        <h4>バイク専用SNS「KoKo-iiYo」へようこそ</h4>
+        <br><br>
+        <p>あなたのバイク、おすすめスポットの写真を投稿しましょう。</p>
+        <% unless user_signed_in? %>
+          <p>ご利用にはユーザー登録が必要となります。登録は<%= link_to new_user_registration_path do %>こちら<% end %>から</p>
+        <% end %>
+        <br>
+        <p>交通規則を遵守し、安全なバイクライフを過ごしましょう！</p>
+        <% if user_signed_in? %>
+          <br><br>
+          <p><strong>新着の投稿、人気の投稿一覧</strong><i class="far fa-arrow-alt-circle-down"></i>を確認しましょう。</p>
+        <% end %>
       </div>
     </div>
   </div>

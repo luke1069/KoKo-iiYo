@@ -19,7 +19,8 @@
 @import 'font-awesome';
 
 body {
-  // background-image: image-url('background-image.jpeg');
+  background-image: image-url('white_00067.jpeg');
+  background-attachment: fixed;
 }
 
 .title {
@@ -29,12 +30,12 @@ body {
 
 .navbar {
   height: 60px;
-  opacity: 0.9;
+  opacity: 0.7;
   background-color: #008080;
 }
 .sidebar-icon {
   background-color: #008080;
-  opacity: 0.9;
+  opacity: 0.7;
   color: white;
 }
 
@@ -50,6 +51,17 @@ body {
   display:inline-block;
 }
 
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.top_back {
+  width:      50px;
+  height:     50px;
+}
+
 
 // sidebar
 .sidebar-icon {
@@ -59,5 +71,58 @@ body {
 .sidebar {
   position: fixed;
   top: 60px;
+}
+
+// top
+.top {
+  position: relative;
+}
+
+.introduction {
+  position: absolute;
+  top: 30%;
+  left: 31%;
+}
+
+.introduction p {
+  font-size: 18px;
+}
+
+#box {
+  height: 680px;
+}
+
+#images {
+  background-color: #000000;
+}
+
+.image1 {
+  background-image: url(topimage5.jpg);
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.image2 {
+  background-image: url(topimage4.jpg);
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.image3 {
+  background-image: url(topimage3.jpg);
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.image4 {
+  background-image: url(topimage2.jpg);
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.image5 {
+  background-image: url(topimage1.jpg);
+  background-size: cover;
+  opacity: 0.5;
 }
 
