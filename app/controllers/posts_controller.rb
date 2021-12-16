@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
 # 新着投稿一覧
   def index
     @posts = Post.all.order(id: "DESC")

@@ -5,7 +5,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <%= link_to new_post_path do %>
+    <%= link_to new_post_path, 'data-turbolinks': false do %>
       <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
         <br><br>
         <p>新規投稿</p>

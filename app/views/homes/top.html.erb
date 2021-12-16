@@ -39,13 +39,13 @@
     <div class="row">
       <div class="col-1" style="height: 1px;"></div>
       <div class="col-11 my-2 p-2 border">
-        <%= link_to posts_path do %>
+        <%= link_to posts_path, 'data-turbolinks': false do %>
           <h3>新着の投稿一覧</h3>
         <% end %>
         <div class="row">
           <% @posts_new.first(5).each do |post| %>
-            <div class="col-2 mx-auto p-2 w-100 border">
-              <%= link_to post_path(post) do %>
+            <div class="col-2 mx-auto bg-light p-2 w-100 border">
+              <%= link_to post_path(post), 'data-turbolinks': false do %>
                 <%= attachment_image_tag post, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class:"border" %>
               <% end %>
               <div id="star-rate-<%= post.id %>"></div>
@@ -61,12 +61,12 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= link_to user_path(post) do %>
+              投稿：<%= link_to user_path(post), 'data-turbolinks': false do %>
                 <%= post.user.name %>さん
               <% end %>
               <br>
               <strong>タイトル：
-                <%= link_to post_path(post) do %>
+                <%= link_to post_path(post), 'data-turbolinks': false do %>
                   <%= post.title %>
                 <% end %>
               </strong>
@@ -86,13 +86,13 @@
           <% end %>
         </div>
 
-        <%= link_to ranking_index_path do %>
+        <%= link_to ranking_index_path, 'data-turbolinks': false do %>
           <h3 class="mt-5">人気の投稿一覧</h3>
         <% end %>
         <div class="row">
           <% @posts_favorite.first(5).each do |post| %>
-            <div class="col-2 mx-auto p-2 w-100 border">
-              <%= link_to post_path(post) do %>
+            <div class="col-2 mx-auto bg-light p-2 w-100 border">
+              <%= link_to post_path(post), 'data-turbolinks': false do %>
                 <%= attachment_image_tag post, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150", class:"border" %>
               <% end %>
               <div id="star-rate2-<%= post.id %>"></div>
@@ -108,12 +108,12 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= link_to user_path(post) do %>
+              投稿：<%= link_to user_path(post), 'data-turbolinks': false do %>
                 <%= post.user.name %>さん
               <% end %>
               <br>
               <strong>タイトル：
-                <%= link_to post_path(post) do %>
+                <%= link_to post_path(post), 'data-turbolinks': false do %>
                   <%= post.title %>
                 <% end %>
               </strong>

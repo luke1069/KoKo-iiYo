@@ -52,7 +52,7 @@
           <h5>地図検索</h5>
           <input id="address" type="textbox" value="">
           <input type="button" value="検索" onclick="codeAddress()">
-          <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+          <p>検索後、マーカーをドラック＆ドロップで位置の調整ができます。<p>
           <div id='map'></div>
         </div>
 
@@ -64,6 +64,7 @@
         </style>
 
         <script>
+
         //初期マップの設定
         let map
         let marker
@@ -73,8 +74,13 @@
           map = new google.maps.Map(document.getElementById('map'), {
             center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %> },
             zoom: 16,
-
           });
+
+          marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
+            position: {lat: <%= @post.lat %>, lng: <%= @post.lng %> }, //マーカーを落とす位置を決める（値はDBに入っている）
+            map: map //マーカーを落とすマップを指定
+          });
+
         }
 
         //検索後のマップ作成
