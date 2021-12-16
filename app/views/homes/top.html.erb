@@ -61,7 +61,7 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= link_to user_path(post), 'data-turbolinks': false do %>
+              投稿：<%= link_to user_path(post.user_id), 'data-turbolinks': false do %>
                 <%= post.user.name %>さん
               <% end %>
               <br>
@@ -108,7 +108,7 @@
                   score: <%= post.rate %>,
                 });
               </script>
-              投稿：<%= link_to user_path(post), 'data-turbolinks': false do %>
+              投稿：<%= link_to user_path(post.user_id), 'data-turbolinks': false do %>
                 <%= post.user.name %>さん
               <% end %>
               <br>
