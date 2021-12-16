@@ -79,6 +79,7 @@ gem 'faker'
 
 gem 'enum_help'
 
+gem 'gon'
 gem 'geocoder'
 
 gem 'impressionist', '~>1.6.1'

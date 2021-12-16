@@ -53,6 +53,7 @@ $(function() {
     event.preventDefault();
   });
 });
+});
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -820,4 +821,3 @@ $(function() {
     return Raty;
   })();
 }));
-});

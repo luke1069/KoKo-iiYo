@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_052813) do
+ActiveRecord::Schema.define(version: 2021_12_16_030046) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 2021_12_10_052813) do
     t.integer "post_prefecture", default: 0
     t.float "rate"
     t.integer "impressions_count", default: 0
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "relationships", force: :cascade do |t|
