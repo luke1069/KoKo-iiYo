@@ -18,10 +18,12 @@ Rails.application.routes.draw do
   resources :maps, only: [:index]
 
   resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy ] do
+    collection do
+      get 'search'
+    end
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  get '/search' => 'posts#search', as: 'search'
 
   get 'users/:id/favorites_index' => 'posts#favorites_index', as: 'favorites_index'
   get 'ranking_index' => 'posts#ranking_index', as: 'ranking_index'
