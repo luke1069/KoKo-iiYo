@@ -68,6 +68,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @posts = Post.all
+  end
+
  private
 
   def post_params
