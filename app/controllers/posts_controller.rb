@@ -68,9 +68,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def search
-    @keyword = Post.ransack(params[:keyword])
-    @posts = @keyword.result(distinct: true).order(created_at: "DESC")
+  def search_index
+    @q = Post.ransack(params[:keyword])
+    @results = @q.result(distinct: true).order(created_at: "DESC")
   end
 
  private

@@ -21,6 +21,10 @@
               <i class="far fa-eye ml-3"></i><%= @post.impressions_counts.count %>
             </span>
           </div>
+          <strong>投稿：<%= link_to user_path(@post.user_id) do %>
+            <%= @post.user.name %>さん
+          <% end %></strong>
+          <br><br>
           <strong>タイトル</strong><br>
           <%= @post.title %><br><br>
           <strong>おすすめ度</strong>

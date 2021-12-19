@@ -1,0 +1,29 @@
+<%= render "homes/sidebar" %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-1" style="height: 1px;"></div>
+
+    <div class="col-11 my-2 border mx-auto">
+      <h3>投稿検索</h3>
+      <div class="container-fluid bg-light m-2 border">
+        <%= render 'search', q: @q, url: search_index_posts_path %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-1" style="height: 1px;"></div>
+
+    <div class="col-11 my-2 border mx-auto">
+      <h3>新着の投稿一覧</h3>
+      <%= render "posts/post_lists", posts: @results %>
+    </div>
+
+  </div>
+</div>

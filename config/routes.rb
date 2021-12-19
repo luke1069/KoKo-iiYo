@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy ] do
     collection do
+      get 'search_index'
       get 'search'
     end
     resource :favorites, only: [:create, :destroy]
