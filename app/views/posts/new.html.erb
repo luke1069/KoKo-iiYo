@@ -5,11 +5,11 @@
 
     <div class="col-1" style="height: 1px;"></div>
 
-    <div class="col-11 my-2 border mx-auto">
+    <div class="col-11 my-2 mx-auto">
       <h3>新規投稿</h3>
       <div class="row">
 
-        <div class="col-3 bg-light py-2 m-2 border">
+        <div class="col-4 bg-light py-2 m-2 border">
           <%= form_with model:@post, local: true do |f| %>
             <p class="mb-2">タイトル</p>
             <%= f.text_field :title %>
@@ -32,15 +32,15 @@
             <!--ここまで-->
 
             <p class="mb-2 mt-4">スポットの都道府県</p>
-            <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
+              <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
             <p class="mb-2 mt-4">緯度</p>
-            <%= f.text_field :lat,:value =>"(マーカー指定)", id: :lat %>
+              <%= f.text_field :lat,:value =>"(マーカー指定)", id: :lat %>
             <p class="mb-2 mt-4">経度</p>
-            <%= f.text_field :lng,:value =>"(マーカー指定)", id: :lng %>
+              <%= f.text_field :lng,:value =>"(マーカー指定)", id: :lng %>
             <p class="mb-2 mt-4">おすすめポイント</p>
-            <%= f.text_area :body %>
+              <%= f.text_area :body %>
             <p class="mb-2 mt-4">写真選択</p>
-            <%= f.attachment_field :image %>
+              <%= f.attachment_field :image %>
             <div class="my-5">
               <%= f.submit "投稿" %>
             </div>
@@ -48,7 +48,7 @@
         </div>
 
         <!--地図検索機能-->
-        <div class="col-8 bg-light py-2 my-2 mx-auto text-center border" >
+        <div class="col-7 bg-light py-2 my-2 mx-auto text-center border" >
           <p>地図検索</p>
           <input id="address" type="textbox" value="">
           <input type="button" value="検索" onclick="codeAddress()">
@@ -72,7 +72,7 @@
 
           map = new google.maps.Map(document.getElementById('map'), {
             center:  {lat: 35.6803997, lng:139.7690174},  //東京
-            zoom: 16,
+            zoom: 5,
             draggable: true
           });
 

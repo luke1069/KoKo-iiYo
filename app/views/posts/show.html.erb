@@ -5,13 +5,13 @@
 
     <div class="col-1" style="height: 1px;"></div>
 
-    <div class="col-11 my-2 border mr-auto">
+    <div class="col-11 my-2 mr-auto">
       <h3>投稿詳細</h3>
       <div class="row">
 
         <div class="col-5 bg-light m-2 p-2 border">
           <div>
-            <%= attachment_image_tag @post, :image, :fill, 400, 400, fallback: "no_image.jpg", size:"400x400", class:"mx-auto border" %>
+            <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"mx-auto border post_or_user_image" %>
           </div>
           <div class="my-3">
             <span id="favorite_buttons_<%= @post.id %>">
@@ -21,9 +21,9 @@
               <i class="far fa-eye ml-3"></i><%= @post.impressions_counts.count %>
             </span>
           </div>
-          <strong>投稿：<%= link_to user_path(@post.user_id) do %>
+          <strong>投稿</strong><br><%= link_to user_path(@post.user_id) do %>
             <%= @post.user.name %>さん
-          <% end %></strong>
+          <% end %>
           <br><br>
           <strong>タイトル</strong><br>
           <%= @post.title %><br><br>
@@ -51,7 +51,7 @@
           <% end %>
         </div>
 
-        <div class="col-5 bg-light m-2 p-2 border">
+        <div class="col-6 bg-light m-2 p-2 border">
           <div id='map'></div>
         </div>
 
@@ -72,7 +72,7 @@
 
           map = new google.maps.Map(document.getElementById('map'), {
             center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %> },
-            zoom: 16,
+            zoom: 13,
           });
 
           marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす

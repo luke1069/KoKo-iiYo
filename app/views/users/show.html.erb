@@ -5,45 +5,50 @@
 
     <div class="col-1" style="height: 1px;"></div>
 
-    <div class="col-11 my-2 border mx-auto">
+    <div class="col-11 my-2 mx-auto">
       <h3 class="my-3"><%= @user.name %>さんのページ</h3>
       <div class="row">
         <div class="col-11 border bg-light mx-auto my-3 p-4">
-          <p>アカウント名：<%= @user.name %>さん</p>
-          <p>お住まい：<%= @user.prefecture %></p>
-          <p>自己紹介：<%= @user.introduction %></p>
-          <p>熟練度(自称)：<%= @user.skill %></p>
-          <p>マイバイク：<%= @user.mybike %></p>
+          <p><strong>アカウント名</strong><br><%= @user.name %>さん</p>
+          <p><strong>お住まい</strong><br><%= @user.prefecture %></p>
+          <p><strong>自己紹介</strong><br><%= @user.introduction %></p>
+          <p><strong>バイク熟練度</strong><br><%= @user.skill %></p>
+          <p><strong>マイバイク</strong><br><%= @user.mybike %></p>
           <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:"200x200", class:"border" %>
-          <% if @user.id == current_user.id %>
-              <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary" do %>
-                <i class="fas fa-user-cog">プロフィール編集</i>
-              <% end %>
-          <% end %>
-
-          <%= render "relationships/follow", user: @user %>
-
-          <% unless @user.id == current_user.id %>
-            <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
-              <% if @haveRoom == true %>
-                <%= link_to "DM画面", room_path(@roomId), class:"btn btn-outline-secondary my-2" %>
-              <% else %>
-                <%= form_with model:@room, local: true do |f| %>
-                  <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
-                  <% end %>
-                  <%= f.submit "DM画面", class:"btn btn-outline-secondary my-2" %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
 
           <div>
             <%= link_to user_following_path(@user) do %>
               フォロー：<%= @user.followings.count %>
             <% end %>
+            <br>
             <%= link_to user_followed_path(@user) do %>
               フォロワー：<%= @user.followers.count %>
+            <% end %>
+          </div>
+
+          <div class="row">
+
+            <% if @user.id == current_user.id %>
+              <%= link_to edit_user_path(@user), class:"ml-3 my-2 btn btn-sm btn-outline-secondary" do %>
+                <i class="fas fa-user-cog">プロフィール編集</i>
+              <% end %>
+            <% end %>
+
+            <%= render "relationships/follow", user: @user %>
+
+            <% unless @user.id == current_user.id %>
+              <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
+                <% if @haveRoom == true %>
+                  <%= link_to "DM画面", room_path(@roomId), class:"btn btn-sm btn-outline-secondary ml-3 my-2" %>
+                <% else %>
+                  <%= form_with model:@room, local: true do |f| %>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <% end %>
+                    <%= f.submit "DM画面", class:"btn btn-sm btn-outline-secondary ml-3 my-2" %>
+                  <% end %>
+                <% end %>
+              <% end %>
             <% end %>
           </div>
 

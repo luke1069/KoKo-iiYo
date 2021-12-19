@@ -28,7 +28,7 @@ body {
 }
 
 .title {
-  font-size: 40px;
+  font-size: 45px;
   font-family: "Comic Sans MS";
 }
 
@@ -37,18 +37,10 @@ body {
   opacity: 0.7;
   background-color: #008080;
 }
-.sidebar-icon {
-  background-color: #008080;
-  opacity: 0.7;
-  color: white;
-}
 
 // header
 body {
   padding-top: 65px;
-}
-.logo {
-  font-size:30px;
 }
 
 .nav-item {
@@ -69,7 +61,14 @@ body {
 
 // sidebar
 .sidebar-icon {
+  background-color: #008080;
+  opacity: 0.7;
+  color: white;
   height:23%;
+}
+
+.sidebar-icon:hover {
+  opacity: 1;
 }
 
 .sidebar {
@@ -83,13 +82,18 @@ body {
 }
 
 .introduction {
+  width: 100%;
   position: absolute;
   top: 30%;
-  left: 31%;
 }
 
 .introduction p {
   font-size: 18px;
+}
+
+.post_or_user_image {
+  width: 100%;
+  height: auto;
 }
 
 #box {

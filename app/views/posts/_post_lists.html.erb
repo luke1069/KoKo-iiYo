@@ -2,20 +2,22 @@
 <div class="row">
 
   <div class="col-1" style="height: 1px;"></div>
-  <div class="col-11 my-2 border mx-auto">
+  <div class="col-11 my-2 mx-auto">
     <h3><%= title %></h3>
     <div class="row">
+      <div class="mx-auto my-2">
+        <%= paginate posts %>
+      </div>
       <% posts.each do |post| %>
         <div class="container-fluid bg-light m-2 border">
           <div class="row">
-            <div class="col-6 m-2 p-2">
+            <div class="col-11 m-2 p-2">
               <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                   <%= link_to user_path(post.user), 'data-turbolinks': false do %>
-                    <%= attachment_image_tag post.user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", size:"150x150", class:"border" %>
+                    <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
                     <p><%= post.user.name %>さん</p>
                   <% end %>
-
                   <span id="favorite_buttons_<%= post.id %>">
                     <%= render "favorites/favorite", post: post %>
                   </span>
@@ -26,10 +28,9 @@
                   <span>
                     コメント：<%= post.comments.count %>
                   </span>
-
                 </div>
-                <div class="col-7 text-left">
-                  <p><strong>タイトル：
+                <div class="col-4 text-left">
+                  <p><strong>タイトル<br>
                     <%= link_to post_path(post), 'data-turbolinks': false do %>
                       <%= post.title %>
                     <% end %></strong>
@@ -49,24 +50,20 @@
                     });
                   </script>
                   <br>
-                  <p>場所：<%= post.post_prefecture %></p>
-                  <p>おすすめポイント：<%= post.body %></p>
+                  <p><strong>場所</strong><br><%= post.post_prefecture %></p>
+                  <p><strong>おすすめポイント</strong><br><%= post.body %></p>
+                </div>
+                <div class="col-5 mx-auto p-2">
+                  <%= link_to post_path(post), 'data-turbolinks': false do %>
+                    <%= attachment_image_tag post, :image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
+                  <% end %>
                 </div>
               </div>
             </div>
-
-            <div class="col-5 my-2 mx-auto" >
-              <div class="col-11 mx-auto p-2">
-                <%= link_to post_path(post), 'data-turbolinks': false do %>
-                  <%= attachment_image_tag post, :image, :fill, 500, 300, fallback: "no_image.jpg", size:"500x300", class:"border" %>
-                <% end %>
-              </div>
-            </div>
-
           </div>
         </div>
       <% end %>
-      <div class="mx-auto">
+      <div class="mx-auto my-2">
         <%= paginate posts %>
       </div>
     </div>

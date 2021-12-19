@@ -18,13 +18,13 @@
               <% end %>
             </td>
             <td>
-              投稿数：<%= user.posts.count %>
+              投稿数<br>　<%= user.posts.count %>
             </td>
             <td>
-              フォロー：<%= user.followings.count %>
+              フォロー<br>　<%= user.followings.count %>
             </td>
             <td>
-              フォロワー：<%= user.followers.count %>
+              フォロワー<br>　<%= user.followers.count %>
             </td>
             <td>
               <%= render "relationships/follow", user: user %>
