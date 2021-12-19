@@ -1,5 +1,5 @@
 # KoKo-iiYo
-「URL:#」
+「URL:https://koko-iiyo.com」
 
 ## サイト概要
 本サイトは、バイク乗りにターゲットを絞ったSNSサイトです。<br>
@@ -48,6 +48,6 @@ TwitterやInstagramなどSNSの普及によって、<br>
 * JSライブラリ:jQuary
 * IDE:Cloud9
 
-## 使用素材
+<!--## 使用素材-->
 
-## 制作時間
+<!--## 制作時間-->
