@@ -18,6 +18,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+a:hover {
+  text-decoration: none;
+}
+
 body {
   background-image: image-url('wallpaper_00014.jpeg');
   background-attachment: fixed;
@@ -25,7 +29,7 @@ body {
 
 .title {
   font-size: 40px;
-  font-family: "Arial Black", "fantasy", "cursive";
+  font-family: "Comic Sans MS";
 }
 
 .navbar {
@@ -126,3 +130,19 @@ body {
   opacity: 0.5;
 }
 
+// ページネーション
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  color: #008080;     /*背景の色を変える*/
+  border-radius: 8px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 8px;    /*角を丸くする*/
+}

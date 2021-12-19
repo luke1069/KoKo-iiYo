@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 # 新着投稿一覧
   def index
-    @posts = Post.all.order(id: "DESC")
+    @posts = Post.all.order(id: "DESC").page(params[:page]).per(4)
   end
 
 # 人気投稿一覧
@@ -14,12 +14,14 @@ class PostsController < ApplicationController
       b.favorites.count <=>
       a.favorites.count
     }
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(4)
   end
 
 # お気に入り投稿一覧
   def favorites_index
     favorites = Favorite.where(user_id: current_user.id).order(id: "DESC").pluck(:post_id)
     @posts = Post.find(favorites)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(4)
   end
 
   def new
@@ -69,8 +71,9 @@ class PostsController < ApplicationController
   end
 
   def search_index
-    @q = Post.ransack(params[:keyword])
-    @results = @q.result(distinct: true).order(created_at: "DESC")
+    @q = Post.ransack(params[:q])
+    @results = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(4)
+    @check = params[:q]
   end
 
  private

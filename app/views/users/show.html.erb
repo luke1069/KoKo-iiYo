@@ -52,12 +52,6 @@
     </div>
   </div>
 
-  <div class="row">
-     <div class="col-1" style="height: 1px;"></div>
-     <div class="col-11 mt-4 border mx-auto">
-       <h3 class="my-3"><%= @user.name %>さんの投稿一覧</h3>
-      <%= render "posts/post_lists", posts: @posts %>
-    </div>
-  </div>
+  <%= render "posts/post_lists", posts: @posts, title: "投稿一覧" %>
 
 </div>

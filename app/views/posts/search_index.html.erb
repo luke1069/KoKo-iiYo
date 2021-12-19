@@ -15,15 +15,8 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-
-    <div class="col-1" style="height: 1px;"></div>
-
-    <div class="col-11 my-2 border mx-auto">
-      <h3>新着の投稿一覧</h3>
-      <%= render "posts/post_lists", posts: @results %>
-    </div>
-
+<% if @check.present? %>
+  <div class="container-fluid">
+    <%= render "posts/post_lists", posts: @results, title:"検索結果" %>
   </div>
-</div>
+<% end %>
