@@ -28,7 +28,7 @@ body {
 }
 
 .title {
-  font-size: 45px;
+  font-size: 40px;
   font-family: "Comic Sans MS";
 }
 
@@ -67,6 +67,10 @@ body {
   height:23%;
 }
 
+.sidebar-icon p {
+  font-size: 13px;
+}
+
 .sidebar-icon:hover {
   opacity: 1;
 }
@@ -103,6 +107,7 @@ body {
 }
 
 #box {
+  width: 100%;
   height: 680px;
 }
 
