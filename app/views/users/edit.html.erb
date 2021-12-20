@@ -6,7 +6,9 @@
     <div class="col-1" style="height: 1px;"></div>
 
     <div class="col-6 bg-light my-2 border mx-auto">
-      <h3 class="my-3">プロフィール編集</h3>
+      <h3 class="my-3">プロフィール編集</h3
+
+      <%= render 'layouts/flash_user', user: @user %>
 
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group">

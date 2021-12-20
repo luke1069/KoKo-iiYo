@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'relationships/followed'
   get 'comments/create'
   get 'comments/destroy'
+
   devise_for :users
   root to: 'homes#top'
 

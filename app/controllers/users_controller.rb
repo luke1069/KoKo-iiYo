@@ -52,10 +52,14 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:id])
-    @user.destroy
-    reset_session
-    flash[:notice] = "退会処理を完了しました。"
-    redirect_to root_path
+    if @user == current_user
+      @user.destroy
+      reset_session
+      flash[:notice] = "退会処理を完了しました。"
+      redirect_to root_path
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
 private

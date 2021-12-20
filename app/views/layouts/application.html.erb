@@ -35,6 +35,10 @@
       </nav>
     </header>
 
+    <% if flash[:notice] %>
+      <p id="notice" class="alert alert-primary"><%= flash[:notice] %></p>
+    <% end %>
+
     <%= yield %>
 
     <!--<footer>-->

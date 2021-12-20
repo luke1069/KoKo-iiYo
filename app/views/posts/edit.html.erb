@@ -7,6 +7,9 @@
 
     <div class="col-11 my-2 mx-auto">
       <h3>投稿編集</h3>
+
+      <%= render 'layouts/flash_post', post: @post %>
+
       <div class="row">
 
         <div class="col-4 bg-light m-2 border">
@@ -44,7 +47,7 @@
             <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"post_or_user_image my-2 border" %>
             <div class="my-5 px-auto">
               <%= f.submit "更新", class:"btn btn-outline-secondary my-2" %>
-              <%= link_to "削除", post_path(@post), method: :delete, class:"btn btn-outline-danger ml-3" %>
+              <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-danger ml-3" %>
             </div>
           <% end %>
         </div>

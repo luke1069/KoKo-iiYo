@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
       @message = Message.new
       @entries = @room.entries
     else
-      redirect_to request.referer
+      redirect_to user_path(current_user)
     end
   end
 

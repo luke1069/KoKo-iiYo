@@ -7,6 +7,9 @@
 
     <div class="col-11 my-2 mx-auto">
       <h3>新規投稿</h3>
+
+      <%= render 'layouts/flash_post', post: @post %>
+
       <div class="row">
 
         <div class="col-4 bg-light py-2 m-2 border">
@@ -34,9 +37,9 @@
             <p class="mb-2 mt-4">スポットの都道府県</p>
               <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
             <p class="mb-2 mt-4">緯度</p>
-              <%= f.text_field :lat,:value =>"(マーカー指定)", id: :lat %>
+              <%= f.text_field :lat,:value =>"(地図から検索)", id: :lat %>
             <p class="mb-2 mt-4">経度</p>
-              <%= f.text_field :lng,:value =>"(マーカー指定)", id: :lng %>
+              <%= f.text_field :lng,:value =>"(地図から検索)", id: :lng %>
             <p class="mb-2 mt-4">おすすめポイント</p>
               <%= f.text_area :body %>
             <p class="mb-2 mt-4">写真選択</p>
@@ -72,7 +75,7 @@
 
           map = new google.maps.Map(document.getElementById('map'), {
             center:  {lat: 35.6803997, lng:139.7690174},  //東京
-            zoom: 5,
+            zoom: 13,
             draggable: true
           });
 
