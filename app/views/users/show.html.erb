@@ -4,59 +4,60 @@
   <div class="row">
 
     <div class="col-1" style="height: 1px;"></div>
-
-    <div class="col-11 mx-auto">
-      <h3 class="my-3"><%= @user.name %>さん</h3>
-      <div class="row">
-        <div class="col-11 border bg-light mx-auto my-3 p-4">
+    <div class="col-11 mx-auto mb-4">
+      <h3>ユーザーページ</h3>
+      <div class="row border m-2 p-2 bg-light">
+        <div class="col-4">
+          <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
+          <div class="row">
+            <div class="col-12 text-right">
+              <%= render "relationships/follow", user: @user %>
+              <% unless @user.id == current_user.id %>
+                <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
+                  <% if @haveRoom == true %>
+                    <%= link_to "DM画面", room_path(@roomId), class:"my-2 btn btn-sm btn-outline-secondary" %>
+                  <% else %>
+                    <%= form_with model:@room, local: true do |f| %>
+                      <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, value: @user.id %>
+                      <% end %>
+                      <%= f.submit "DM画面", class:"my-2 btn btn-sm btn-outline-secondary" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <% if @user.id == current_user.id %>
+                <%= link_to edit_user_path(@user), class:"my-2 btn btn-sm btn-outline-secondary" do %>
+                  <i class="fas fa-user-cog">プロフィール編集</i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-right">
+              <%= link_to user_following_path(@user), class:"text-dark mx-2" do %>
+                <strong><%= @user.followings.count %></strong> フォロー
+              <% end %>
+              <%= link_to user_followed_path(@user), class:"text-dark mx-2" do %>
+                <strong><%= @user.followers.count %></strong> フォロワー
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
           <p><strong>アカウント名</strong><br><%= @user.name %>さん</p>
           <p><strong>お住まい</strong><br><%= @user.prefecture %></p>
           <p><strong>自己紹介</strong><br><%= @user.introduction %></p>
           <p><strong>バイク熟練度</strong><br><%= @user.skill %></p>
           <p><strong>マイバイク</strong><br><%= @user.mybike %></p>
-          <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size:"200x200", class:"border" %>
-
-          <div>
-            <%= link_to user_following_path(@user) do %>
-              フォロー：<%= @user.followings.count %>
-            <% end %>
-            <br>
-            <%= link_to user_followed_path(@user) do %>
-              フォロワー：<%= @user.followers.count %>
-            <% end %>
-          </div>
-
-          <div class="row">
-
-            <% if @user.id == current_user.id %>
-              <%= link_to edit_user_path(@user), class:"ml-3 my-2 btn btn-sm btn-outline-secondary" do %>
-                <i class="fas fa-user-cog">プロフィール編集</i>
-              <% end %>
-            <% end %>
-
-            <%= render "relationships/follow", user: @user %>
-
-            <% unless @user.id == current_user.id %>
-              <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
-                <% if @haveRoom == true %>
-                  <%= link_to "DM画面", room_path(@roomId), class:"btn btn-sm btn-outline-secondary ml-3 my-2" %>
-                <% else %>
-                  <%= form_with model:@room, local: true do |f| %>
-                    <%= fields_for @entry do |e| %>
-                      <%= e.hidden_field :user_id, value: @user.id %>
-                    <% end %>
-                    <%= f.submit "DM画面", class:"btn btn-sm btn-outline-secondary ml-3 my-2" %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-
         </div>
+        <div class="col-4"></div>
       </div>
     </div>
+
+    <div class="container-fluid">
+      <%= render "posts/post_lists", posts: @posts, title:"投稿一覧" %>
+    </div>
+
   </div>
-
-  <%= render "posts/post_lists", posts: @posts, title: "投稿一覧" %>
-
 </div>

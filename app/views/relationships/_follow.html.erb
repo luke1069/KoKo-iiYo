@@ -1,9 +1,7 @@
 <% if user != current_user %>
-  <div>
-    <% if user.is_followed_by(current_user) %>
-      <%= link_to "フォロー外す", user_relationships_path(user), method: :delete, class:"btn btn-sm ml-3 my-2 btn-outline-danger" %>
-    <% else %>
-      <%= link_to "フォローする", user_relationships_path(user), method: :post, class:"btn btn-sm ml-3 my-2 btn-outline-secondary" %>
-    <% end %>
-  </div>
+  <% if user.is_followed_by(current_user) %>
+    <%= link_to "フォロー外す", user_relationships_path(user), method: :delete, class:"my-2 btn btn-sm btn-outline-danger" %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user), method: :post, class:"my-2 btn btn-sm btn-outline-secondary" %>
+  <% end %>
 <% end %>

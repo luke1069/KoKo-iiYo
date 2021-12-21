@@ -1,15 +1,15 @@
-<div class="sidebar col-md-1 mx-0 text-center pl-2">
+<div class="sidebar col-1 text-center">
   <% if user_signed_in? %>
     <%= link_to search_index_posts_path, 'data-turbolinks': false do %>
-      <div class="sidebar-icon w-100 fas fa-search border py-5 my-1">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-search"></i>
         <p>投稿検索</p>
       </div>
     <% end %>
   <% else %>
     <%= link_to new_user_session_path, 'data-turbolinks': false do %>
-      <div class="sidebar-icon w-100 fas fa-search border py-5 my-1">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-search"></i>
         <p>投稿検索</p>
       </div>
     <% end %>
@@ -17,15 +17,15 @@
 
   <% if user_signed_in? %>
     <%= link_to new_post_path, 'data-turbolinks': false do %>
-      <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-biking"></i>
         <p>新規投稿</p>
       </div>
     <% end %>
   <% else %>
     <%= link_to new_user_session_path do %>
-      <div class="sidebar-icon w-100 fas fa-biking border py-5 my-2">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-biking"></i>
         <p>新規投稿</p>
       </div>
     <% end %>
@@ -33,15 +33,15 @@
 
   <% if user_signed_in? %>
     <%= link_to favorites_index_path(current_user) do %>
-      <div class="sidebar-icon w-100 fas fa-star border py-5 my-auto">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-star"></i>
         <p>お気に入り</p>
       </div>
     <% end %>
   <% else %>
     <%= link_to new_user_session_path do %>
-      <div class="sidebar-icon w-100 fas fa-star border py-5 my-2">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-star"></i>
         <p>お気に入り</p>
       </div>
     <% end %>
@@ -49,15 +49,15 @@
 
   <% if user_signed_in? %>
     <%= link_to user_path(current_user) do %>
-      <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-gas-pump"></i>
         <p>マイページ</p>
       </div>
     <% end %>
   <% else %>
     <%= link_to new_user_session_path do %>
-      <div class="sidebar-icon w-100 fas fa-gas-pump border py-5 my-2">
-        <br><br>
+      <div class="sidebar-icon w-100 border">
+        <i class="fas fa-gas-pump"></i>
         <p>マイページ</p>
       </div>
     <% end %>

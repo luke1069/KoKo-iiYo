@@ -9,8 +9,8 @@
         <%= paginate posts %>
       </div>
       <% posts.each do |post| %>
-        <div class="container-fluid bg-light m-2 border">
-          <div class="row">
+        <div class="container-fluid m-2 border">
+          <div class="row top-posts">
             <div class="col-11 m-2 p-2">
               <div class="row">
                 <div class="col-3">
@@ -18,38 +18,42 @@
                     <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
                     <p><%= post.user.name %>さん</p>
                   <% end %>
-                  <span id="favorite_buttons_<%= post.id %>">
-                    <%= render "favorites/favorite", post: post %>
-                  </span>
-                  <span>
-                    <i class="far fa-eye ml-3"></i><%= post.impressions_counts.count %>
-                  </span>
-                  <br>
-                  <span>
-                    コメント：<%= post.comments.count %>
-                  </span>
+                  <div class="fontawesomes">
+                    <strong>
+                      <span id="favorite_buttons_<%= post.id %>">
+                        <%= render "favorites/favorite", post: post %>
+                      </span>
+                      <span>
+                        <i class="far fa-eye ml-3"></i><%= post.impressions_counts.count %>
+                      </span>
+                      <span>
+                        <i class="far fa-comments ml-3"></i><%= post.comments.count %>
+                      </span>
+                    </strong><br>
+                    <span>
+                      <i class="fas fa-clock"></i>(<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
+                    </span>
+                    <div id="star-rate-<%= post.id %>"></div>
+                    <script>
+                      $('#star-rate-<%= post.id %>').empty();
+                      $('#star-rate-<%= post.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= post.rate %>,
+                      });
+                    </script>
+                  </div>
                 </div>
                 <div class="col-4 text-left">
                   <p><strong>タイトル<br>
                     <%= link_to post_path(post), 'data-turbolinks': false do %>
                       <%= post.title %>
                     <% end %></strong>
-                    (<%= post.created_at.strftime('%Y/%m/%d %H:%M') %>)
                   </p>
-                  <div id="star-rate-<%= post.id %>"></div>
-                  <script>
-                    $('#star-rate-<%= post.id %>').empty();
-                    $('#star-rate-<%= post.id %>').raty({
-                      size: 36,
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half: true,
-                      readOnly: true,
-                      score: <%= post.rate %>,
-                    });
-                  </script>
-                  <br>
                   <p><strong>場所</strong><br><%= post.post_prefecture %></p>
                   <p><strong>おすすめポイント</strong><br><%= post.body %></p>
                 </div>

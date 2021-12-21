@@ -18,6 +18,8 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// 全体
+
 a:hover {
   text-decoration: none;
 }
@@ -27,18 +29,25 @@ body {
   background-attachment: fixed;
 }
 
+// header
+
 .title {
   font-size: 40px;
   font-family: "Comic Sans MS";
+  color: white;
 }
 
 .navbar {
   height: 60px;
   opacity: 0.7;
   background-color: #008080;
+  transition: all 0.3s;
 }
 
-// header
+.navbar:hover {
+  opacity: 1.0;
+}
+
 body {
   padding-top: 65px;
 }
@@ -60,19 +69,29 @@ body {
 
 
 // sidebar
+.sidebar {
+  padding-left: 0;
+}
+
+
 .sidebar-icon {
   background-color: #008080;
+  padding-top: 60%;
   opacity: 0.7;
   color: white;
-  height:23%;
+  height: 23vh;
+  transition:all 0.3s;
 }
 
 .sidebar-icon p {
   font-size: 13px;
+  margin-bottom: 0;
 }
 
 .sidebar-icon:hover {
+  font-size: 20px;
   opacity: 1;
+  color: #FFFF00;
 }
 
 .sidebar {
@@ -95,6 +114,10 @@ body {
   width: 100%;
   position: absolute;
   top: 30%;
+}
+
+.main-intro {
+  padding-bottom: 30px;
 }
 
 .introduction p {
@@ -145,19 +168,35 @@ body {
   opacity: 0.5;
 }
 
+.top-posts {
+  background-color: white;
+  a {
+    color: black;
+  }
+  transition: all 0.5s;
+}
+
+.top-posts:hover {
+  background-color: #b7d4d3;
+}
+
+.sub-title {
+  color: black;
+}
+
+// 投稿検索
+
 // ページネーション
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
 }
 
-/* 表示しているページ番号のデザイン */
 .pagination>.active>a {
   color: #008080;     /*背景の色を変える*/
   border-radius: 8px;     /*角を丸くする*/
 }
 
-/*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 8px;    /*角を丸くする*/
 }
