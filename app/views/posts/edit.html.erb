@@ -4,133 +4,154 @@
   <div class="row">
 
     <div class="col-1" style="height: 1px;"></div>
-
     <div class="col-11 my-2 mx-auto">
       <h3>投稿編集</h3>
 
       <%= render 'layouts/flash_post', post: @post %>
 
-      <div class="row">
+      <div class="row border m-2 p-2 bg-light">
 
-        <div class="col-4 bg-light m-2 border">
-          <%= form_with model:@post, local: true do |f| %>
-            <p class="mb-2">タイトル</p>
-            <%= f.text_field :title, placeholder: @post.title %>
-             <!--評価機能-->
-            <p class="mb-2 mt-4">評価</p>
-            <span id="edit-star-<%= @post.id %>" class="ml-3">
-              <%= f.hidden_field :rate, id: :review_star %>
-            </span>
-            <script>
-              $('#edit-star-<%= @post.id %>').raty({
-                size     : 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                score: '<%= @post.rate %>',
-                scoreName: 'post[rate]',
-                half: true,
-              });
-            </script>
-            <!--ここまで-->
-            <p class="mb-2 mt-4">スポットの都道府県</p>
-            <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, placeholder: @post.post_prefecture, class:"mb-3" %>
-            <p class="mb-2 mt-4">緯度</p>
-            <%= f.text_field :lat, :value => @post.lat, id: :lat %>
-            <p class="mb-2 mt-4">経度</p>
-            <%= f.text_field :lng, :value => @post.lng, id: :lng %>
-            <p class="mb-2 mt-4">おすすめポイント</p>
-            <%= f.text_area :body, placeholder: @post.body %>
-            <p class="mb-2 mt-4">写真選択</p>
-            <%= f.attachment_field :image, placeholder: @post.image_id %>
-            <p class="mb-2 mt-4">現在の写真</p>
-            <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"post_or_user_image my-2 border" %>
-            <div class="my-5 px-auto">
-              <%= f.submit "更新", class:"btn btn-outline-secondary my-2" %>
-              <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-danger ml-3" %>
+        <%= form_with model:@post, local: true do |f| %>
+          <div class="row">
+            <div class="col-7">
+              <p class="my-2">写真選択</p>
+                <%= f.attachment_field :image %>
+              <p class="my-2">プレビュー</p>
+                <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"post_or_user_image my-2 border", id:"preview" %>
+              <script>
+                $('#post_image').on('change', function (e) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      $("#preview").attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(e.target.files[0]);
+                });
+              </script>
             </div>
-          <% end %>
-        </div>
-
-         <div class="col-7 bg-light py-2 my-2 mx-auto text-center border" >
-          <p>地図検索</p>
-          <input id="address" type="textbox" value="">
-          <input type="button" value="検索" onclick="codeAddress()">
-          <p>検索後、マーカーをドラック＆ドロップで位置の調整ができます。<p>
-          <div id='map' class="border"></div>
-        </div>
-
-        <style>
-          #map {
-            height: 600px;
-            width: 100%;
-          }
-        </style>
-
-        <script>
-
-        //初期マップの設定
-        let map
-        let marker
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
-
-          map = new google.maps.Map(document.getElementById('map'), {
-            center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %> },
-            zoom: 13,
-          });
-
-          marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
-            position: {lat: <%= @post.lat %>, lng: <%= @post.lng %> }, //マーカーを落とす位置を決める（値はDBに入っている）
-            map: map //マーカーを落とすマップを指定
-          });
-
-        }
-
-        //検索後のマップ作成
-        let geocoder
-        let aft
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-                //マーカーが複数できないようにする
-                if (aft == true){
-                    marker.setMap(null);
-                }
-
-                //新しくマーカーを作成する
-                map.setCenter(results[0].geometry.location);
-                    marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    draggable: true // ドラッグ可能にする
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p class="my-2">タイトル</p>
+              <%= f.text_field :title %>
+              <!--評価機能-->
+              <p class="my-2">評価</p>
+              <span id="edit-star-<%= @post.id %>" class="ml-3">
+                <%= f.hidden_field :rate, id: :review_star %>
+              </span>
+              <script>
+                $('#edit-star-<%= @post.id %>').raty({
+                  size     : 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  score: '<%= @post.rate %>',
+                  scoreName: 'post[rate]',
+                  half: true,
                 });
+              </script>
+              <!--ここまで-->
+              <p class="my-2">スポットの都道府県</p>
+                <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
+              <p class="my-2">おすすめポイント</p>
+                <%= f.text_area :body, size: "60x5" %>
+              <%= f.hidden_field :lat,:value => @post.lat, id: :lat %>
+              <%= f.hidden_field :lng,:value => @post.lng, id: :lng %>
+            </div>
+          </div>
 
-                //二度目以降か判断
-                aft = true
+          <div class="row">
+            <div class="col-7" >
+              <p>スポット検索</p>
+              <input id="address" type="textbox" value="">
+              <input type="button" value="検索" onclick="codeAddress()">
+              (検索後、マーカーをドラック＆ドロップで調整)
+              <div class="border my-2" id='map'></div>
+            </div>
+          </div>
 
-                //検索した時に緯度経度を入力する
-                document.getElementById('lat').value = results[0].geometry.location.lat();
-                document.getElementById('lng').value = results[0].geometry.location.lng();
-
-                // マーカーのドロップ（ドラッグ終了）時のイベント
-                google.maps.event.addListener( marker, 'dragend', function(ev){
-                    // イベントの引数evの、プロパティ.latLngが緯度経度
-                    document.getElementById('lat').value = ev.latLng.lat();
-                    document.getElementById('lng').value = ev.latLng.lng();
-                });
-            } else {
-              alert('該当する結果がありませんでした：' + status);
+          <style>
+            #map {
+              height: 500px;
+              width: 100%;
             }
-          });
-        }
+          </style>
 
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["GOOGLE_MAP_KEY"]%>&callback=initMap" async defer></script>
+          <script>
 
-      </div>
+          //初期マップの設定
+          let map
+          let marker
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %> },
+              zoom: 13,
+            });
+
+            marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
+              position: {lat: <%= @post.lat %>, lng: <%= @post.lng %> }, //マーカーを落とす位置を決める（値はDBに入っている）
+              map: map //マーカーを落とすマップを指定
+            });
+
+          }
+
+          //検索後のマップ作成
+          let geocoder
+          let aft
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                  //マーカーが複数できないようにする
+                  if (aft == true){
+                      marker.setMap(null);
+                  }
+
+                  //新しくマーカーを作成する
+                  map.setCenter(results[0].geometry.location);
+                      marker = new google.maps.Marker({
+                      map: map,
+                      position: results[0].geometry.location,
+                      draggable: true // ドラッグ可能にする
+                  });
+
+                  //二度目以降か判断
+                  aft = true
+
+                  //検索した時に緯度経度を入力する
+                  document.getElementById('lat').value = results[0].geometry.location.lat();
+                  document.getElementById('lng').value = results[0].geometry.location.lng();
+
+                  // マーカーのドロップ（ドラッグ終了）時のイベント
+                  google.maps.event.addListener( marker, 'dragend', function(ev){
+                      // イベントの引数evの、プロパティ.latLngが緯度経度
+                      document.getElementById('lat').value = ev.latLng.lat();
+                      document.getElementById('lng').value = ev.latLng.lng();
+                  });
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });
+          }
+
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["GOOGLE_MAP_KEY"]%>&callback=initMap" async defer></script>
+
+          <div class="my-5">
+            <%= f.submit "編集", class:"btn btn-outline-secondary" %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-danger ml-3" %>
+          </div>
+        <% end %>
+
+        <!--地図検索機能-->
 
     </div>
   </div>
 </div>
+
+
+
+
+
+
