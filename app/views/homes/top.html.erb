@@ -79,16 +79,16 @@
               </div>
               <div class="row">
                 <div class="col-7">
-                  <strong>タイトル</strong><br>
                   <%= link_to post_path(post), 'data-turbolinks': false do %>
+                    <strong>タイトル</strong><br>
                     『<%= post.title %>』
+                    <br>
+                    <strong>場所</strong><br>
+                    <%= post.post_prefecture %>
+                    <br>
+                    <strong>おすすめのポイント</strong><br>
+                    <%= post.body.truncate(50) %>
                   <% end %>
-                  <br>
-                  <strong>場所</strong><br>
-                  <%= post.post_prefecture %>
-                  <br>
-                  <strong>おすすめのポイント</strong><br>
-                  <%= post.body.truncate(50) %>
                 </div>
                 <div class="col-5">
                   <strong>投稿</strong><br>
@@ -146,16 +146,16 @@
               </div>
               <div class="row">
                 <div class="col-7">
-                  <strong>タイトル</strong><br>
                   <%= link_to post_path(post), 'data-turbolinks': false do %>
+                    <strong>タイトル</strong><br>
                     『<%= post.title %>』
+                    <br>
+                    <strong>場所</strong><br>
+                    <%= post.post_prefecture %>
+                    <br>
+                    <strong>おすすめのポイント</strong><br>
+                    <%= post.body.truncate(50) %>
                   <% end %>
-                  <br>
-                  <strong>場所</strong><br>
-                  <%= post.post_prefecture %>
-                  <br>
-                  <strong>おすすめのポイント</strong><br>
-                  <%= post.body.truncate(50) %>
                 </div>
                 <div class="col-5">
                   <strong>投稿</strong><br>

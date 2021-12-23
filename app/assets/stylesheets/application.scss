@@ -35,6 +35,11 @@ body {
   font-size: 40px;
   font-family: "Comic Sans MS";
   color: white;
+  transition: all 0.3s;
+}
+
+.title:hover {
+  font-size: 41px;
 }
 
 .navbar {
