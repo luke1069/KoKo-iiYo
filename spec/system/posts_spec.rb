@@ -36,11 +36,14 @@ RSpec.describe '機能テスト', type: :system do
       end
       context '投稿処理のテスト' do
         it '投稿後のリダイレクト先は正しいか' do
-          fill_in 'post[title]', with: 'hoge'
-          fill_in 'post[body]', with: 'hoge'
-          choose 5
-          fill_in 'post[lat]', with: Faker::Number.between(from:-90, to:90)
-          fill_in 'post[lng]', with: Faker::Number.between(from:-90, to:90)
+          fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
+          fill_in 'post[body]', with: Faker::Lorem.characters(number:10)
+          find('#lng', visible: false).set 999999
+          find('#lat', visible: false).set 999999
+          find('#review_star', visible: false).set 5
+          # fill_in 'post[rate]', with: Faker::Number.between(from:1, to:5)
+          # fill_in 'post[lat]', with: Faker::Number.between(from:-90, to:90)
+          # fill_in 'post[lng]', with: Faker::Number.between(from:-90, to:90)
           click_button '投稿'
           expect(page).to have_current_path post_path(Post.last)
         end
