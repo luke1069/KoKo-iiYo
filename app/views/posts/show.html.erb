@@ -51,7 +51,7 @@
           <strong>場所</strong><br>
           <%= @post.post_prefecture %><br><br>
           <strong>おすすめポイント</strong><br>
-          <%= @post.body %><br><br>
+          <%= safe_join(@post.body.split("\n"),tag(:br)) %><br><br>
           <% if @post.user == current_user %>
             <%= link_to edit_post_path(@post), 'data-turbolinks': false, class:"btn btn-sm btn-outline-secondary" do %>
               <i class="fas fa-user-cog">投稿編集</i>

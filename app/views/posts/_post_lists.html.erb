@@ -54,7 +54,7 @@
                     <%= post.title %>
                     </p>
                     <p><strong>場所</strong><br><%= post.post_prefecture %></p>
-                    <p><strong>おすすめポイント</strong><br><%= post.body %></p>
+                    <p><strong>おすすめポイント</strong><br><%= post.body.truncate(60) %></p>
                   <% end %>
                 </div>
                 <div class="col-5 mx-auto p-2">

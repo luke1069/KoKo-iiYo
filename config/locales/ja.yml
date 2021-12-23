@@ -17,6 +17,8 @@ ja:
     models:
       post: 投稿
     attributes:
+      user:
+        introduction: 自己紹介
       post:
         title: タイトル
         body: おすすめポイント
