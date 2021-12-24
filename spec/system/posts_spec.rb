@@ -168,6 +168,52 @@ RSpec.describe 'post機能テスト', type: :system do
       end
     end
 
+    describe '投稿検索画面のテスト' do
+      before do
+        visit search_index_posts_path
+      end
+      context '画面表示のテスト' do
+        it '検索ボタンが表示されているか' do
+          expect(page).to have_button '検索'
+        end
+        it '検索入力欄が表示されているか' do
+          expect(page).to have_field 'q[title_or_body_cont]'
+        end
+      end
+      context '検索処理のテスト' do
+        it '検索実行後、検索結果が表示されるか' do
+          fill_in 'q[title_or_body_cont]', with: Faker::Lorem.characters(number:10)
+          click_button '検索'
+          expect(page).to have_content '検索結果'
+        end
+      end
+    end
+
+    describe 'コメント投稿画面のテスト' do
+      before do
+        visit post_path(post)
+      end
+      context '画面表示のテスト' do
+        it 'コメントの投稿画面があるか' do
+          expect(page).to have_content 'コメントの投稿一覧'
+        end
+        it 'コメントの入力欄があるか' do
+          expect(page).to have_field 'comment[comment]'
+        end
+        it 'コメントの送信ボタンがあるか' do
+          expect(page).to have_button '送信'
+        end
+      end
+      context 'コメント処理のテスト' do
+        it 'コメント送信成功後にコメントが表示されるか', js: true do
+          click_button '送信'
+          using_wait_time 5 do
+            expect(page).to have_content 'hoge'
+          end
+        end
+      end
+    end
+
   end
 
 end
