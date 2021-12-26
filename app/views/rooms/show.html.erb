@@ -18,7 +18,7 @@
                     <%= m.user.name %>さん
                   <% end %>
                   <br>
-                  <strong><%= m.content %></strong><br>
+                  <strong><%= safe_join(m.content.split("\n"),tag(:br)) %></strong><br>
                   (<%= m.created_at.strftime('%Y/%m/%d %H:%M') %>)
                 </div>
               <% else %>
@@ -28,7 +28,7 @@
                   <% end %>
                   <%= link_to "削除", message_path(m), method: :delete, class:"btn btn-sm btn-outline-danger"%>
                   <br>
-                  <strong class=""><%= m.content %></strong><br>
+                  <strong class=""><%= safe_join(m.content.split("\n"),tag(:br)) %></strong><br>
                   (<%= m.created_at.strftime('%Y/%m/%d %H:%M') %>)
                 </div>
               <% end %>
