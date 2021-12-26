@@ -11,7 +11,7 @@
         <%= link_to "削除", post_comment_path(comment.post_id, comment), method: :delete, remote: true, class:"btn btn-outline-danger ml-3" %>
       <% end %>
       <br>
-      <strong><%= comment.comment %></strong>
+      <strong><%= safe_join(comment.comment.split("\n"), tag(:br)) %></strong>
     </div>
   <% end %>
 </div>
