@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     favorite = Favorite.new(post_id: @post.id)
     favorite.user_id = current_user.id
     favorite.save
-    # redirect_to request.referer
+    # redirect_to request.referer　非同期通信化
   end
 
   def destroy
@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
     if favorite.user_id == current_user.id
       favorite.destroy
     end
-    # redirect_to request.referer
+    # redirect_to request.referer　非同期通信化
   end
 
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: "DESC").page(params[:page]).per(4)
-    # チャット機能
+    # チャット機能(条件分岐)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id

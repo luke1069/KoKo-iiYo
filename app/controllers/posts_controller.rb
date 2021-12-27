@@ -24,6 +24,13 @@ class PostsController < ApplicationController
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(4)
   end
 
+# 検索投稿一覧
+  def search_index
+    @q = Post.ransack(params[:q])
+    @results = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(4)
+    @check = params[:q]
+  end
+
   def new
     @post = Post.new
   end
@@ -74,12 +81,6 @@ class PostsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def search_index
-    @q = Post.ransack(params[:q])
-    @results = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(4)
-    @check = params[:q]
   end
 
  private
