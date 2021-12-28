@@ -33,7 +33,6 @@ TwitterやInstagramなどSNSの普及によって、<br>
 * 自慢のバイクの写真を投稿し、各ユーザーからリアクションを得る。
 * 検索機能より、次回のツーリングのスポット、ルート探しの参考にする。
 * バイクに乗り始めた方で、ツーリング仲間を探す。
-などなど・・・
 
 ## 設計書
 「URL:https://docs.google.com/spreadsheets/d/1mG_uRWKvemBcoTQ1kmyOQP8jVJ59rrqN/edit#gid=767290893」
