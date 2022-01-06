@@ -92,3 +92,5 @@ group :production do
 end
 
 gem 'ransack'
+
+gem 'google-cloud-vision'
