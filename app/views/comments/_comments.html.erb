@@ -7,11 +7,11 @@
         <%= comment.user.name %>さん
       <% end %>
       (<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>)
-      <% if comment.user == current_user %>
-        <%= link_to "削除", post_comment_path(comment.post_id, comment), method: :delete, remote: true, class:"btn btn-outline-danger ml-3" %>
-      <% end %>
       <br>
-      <strong><%= safe_join(comment.comment.split("\n"), tag(:br)) %></strong>
+      <strong><%= safe_join(comment.comment.split("\n"), tag(:br)) %></strong><br>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", post_comment_path(comment.post_id, comment), method: :delete, remote: true, class:"btn btn-outline-danger" %>
+      <% end %>
     </div>
   <% end %>
 </div>

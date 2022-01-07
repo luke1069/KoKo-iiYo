@@ -3,11 +3,10 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-1" style="height: 1px;"></div>
-
-    <div class="col-11 my-2 mx-auto">
+    <div class="col-3 col-md-1" style="height: 1px;"></div>
+    <div class="col-9 col-md-11 my-2 mr-auto">
       <h3 class="my-3">ダイレクトメッセージ</h3>
-      <div class="col-10 bg-light my-3 mx-auto border">
+      <div class="col-12 col-md-10 bg-light my-3 mx-auto border">
         <div class="messages">
           <% if @messages.present? %>
             <% @messages.each do |m| %>

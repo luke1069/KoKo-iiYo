@@ -3,11 +3,11 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-1" style="height: 1px;"></div>
-    <div class="col-11 mx-auto mb-4">
+    <div class="col-3 col-md-1" style="height: 1px;"></div>
+    <div class="col-9 col-md-11 mx-auto mb-4">
       <h3>ユーザーページ</h3>
       <div class="row border m-2 p-2 bg-light">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
           <div class="row">
             <div class="col-12 text-right">
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <p><strong>アカウント名</strong><br><%= @user.name %>さん</p>
           <p><strong>お住まい</strong><br><%= @user.prefecture %></p>
           <p><strong>自己紹介</strong><br><%= safe_join(@user.introduction.to_s.split("\n"),tag(:br)) %></p>
