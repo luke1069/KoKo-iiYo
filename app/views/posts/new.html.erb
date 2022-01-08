@@ -52,7 +52,7 @@
               <p class="my-2">スポットの都道府県</p>
                 <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
               <p class="my-2">おすすめポイント</p>
-                <%= f.text_area :body, size: "50x5" %>
+                <%= f.text_area :body, class:"text_area" %>
               <%= f.hidden_field :lat,:value =>"(地図から検索)", id: :lat %>
               <%= f.hidden_field :lng,:value =>"(地図から検索)", id: :lng %>
             </div>

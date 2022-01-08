@@ -38,7 +38,7 @@
         </div>
         <div class="new_messages m-5 text-right">
           <%= form_with model:@message, local:true do |f| %>
-            <%= f.text_area :content, size: "50x3", placeholder: "メッセージを入力して下さい。" %>
+            <%= f.text_area :content, class:"text_area", placeholder: "メッセージを入力して下さい。" %>
             <%= f.hidden_field :room_id, value: @room.id %><br>
             <%= f.submit "送信" %>
           <% end %>
