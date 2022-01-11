@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-2 col-md-1" style="height: 1px;"></div>
-    <div class="col-10 col-md-11 my-2 mx-auto">
+    <div class="col-10 col-md-11 px-0 my-2 mx-auto">
       <h3>投稿編集</h3>
 
       <%= render 'layouts/flash_post', post: @post %>
@@ -60,7 +60,7 @@
           </div>
 
           <div class="row">
-            <div class="col-12 col-md-7" >
+            <div class="col-10 col-md-7" >
               <p>スポット検索</p>
               <input id="address" type="textbox" value="">
               <input type="button" value="検索" onclick="codeAddress()">
