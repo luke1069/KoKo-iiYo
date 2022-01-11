@@ -50,21 +50,25 @@
             </script>
           </div>
         </div>
-        <div class="col-8 col-md-4">
-          <%= link_to user_path(@post.user), 'data-turbolinks': false do %>
-            <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
-            <strong class="text-dark">投稿</strong>
-            <p class="text-dark"><%= @post.user.name %>さん</p>
-          <% end %>
-          <strong>場所</strong><br>
-          <%= @post.post_prefecture %><br><br>
-          <strong>おすすめポイント</strong><br>
-          <%= safe_join(@post.body.split("\n"),tag(:br)) %><br><br>
-          <% if @post.user == current_user %>
-            <%= link_to edit_post_path(@post), 'data-turbolinks': false, class:"btn btn-sm btn-outline-secondary" do %>
-              <i class="fas fa-user-cog">投稿編集</i>
+        <div class="col-12 col-md-4">
+          <div class="col-7 col-md-12">
+            <%= link_to user_path(@post.user), 'data-turbolinks': false do %>
+              <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
+              <strong class="text-dark">投稿</strong>
+              <p class="text-dark"><%= @post.user.name %>さん</p>
             <% end %>
-          <% end %>
+          </div>
+          <div class="col-12">
+            <strong>場所</strong><br>
+            <%= @post.post_prefecture %><br><br>
+            <strong>おすすめポイント</strong><br>
+            <%= safe_join(@post.body.split("\n"),tag(:br)) %><br><br>
+            <% if @post.user == current_user %>
+              <%= link_to edit_post_path(@post), 'data-turbolinks': false, class:"btn btn-sm btn-outline-secondary" do %>
+                <i class="fas fa-user-cog">投稿編集</i>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
 
