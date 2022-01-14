@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require validationEngine.jquery
  */
 
 @import "bootstrap";
@@ -207,6 +208,10 @@ body {
 #error_explanation {
   text-align: left;
 }
+
+// .user_nameformError {
+//   text-align: center;
+// }
 
 // テキスト入力枠サイズ調整
 .text_area {

@@ -94,3 +94,5 @@ end
 gem 'ransack'
 
 gem 'google-cloud-vision'
+
+gem 'jQuery-Validation-Engine-rails'

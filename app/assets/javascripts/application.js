@@ -7,6 +7,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery.validationEngine-en
+//= require jquery.validationEngine
 
 /*!
  * Raty - A Star Rating Plugin

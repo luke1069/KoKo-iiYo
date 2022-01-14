@@ -8,12 +8,14 @@
 
         <div class="field text-center">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
+          class: "validate[required, custom[email]]" %>
         </div><br>
 
         <div class="field text-center">
           <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "current-password",
+            class: "validate[required, custom[onlyLetterNumber]]"%>
         </div>
 
         <% if devise_mapping.rememberable? %>
@@ -32,3 +34,37 @@
     </div>
   </div>
 </div>
+
+<script>
+// jQueryバリデーション
+  $(document).ready(function(){
+    $("#new_user").validationEngine({
+
+      promptPosition: "topRight",
+
+      'custom_error_messages': {
+        '#user_email': {
+          'required': {
+            'message': '必須入力内容'
+          },
+          'custom[email]': {
+            'message': '「@」のemail形式'
+          }
+        },
+        '#user_password': {
+          'required': {
+            'message': '必須入力内容'
+          },
+          'minSize': {
+            'message': '半角英数字6文字以上'
+          },
+          'custom[onlyLetterNumber]': {
+            'message': '半角英数字のみ'
+          }
+        }
+      }
+    });
+  });
+</script>
+
+
