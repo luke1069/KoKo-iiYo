@@ -63,18 +63,23 @@ body {
   border: 0;
 }
 
-.navbar-toggler.active {
-  display: none;
-}
+// .navbar-toggler.active {
+//   display: none;
+// }
 
 .hamburger {
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: black;
   padding: 5px;
-  color: white;
+  // color: white;
   transition: all 0.3s;
 }
 
 .hamburger:hover {
   color: #D6FF58;
+    border: 5px solid black;
+
 }
 
 body {

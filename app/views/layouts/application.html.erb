@@ -21,7 +21,7 @@
           data-target="#nabvar-menu"
           aria-controls="nabvar-menu"
           aria-label="Toggle navigation">
-          <i class="fas fa-bars fa-2x hamburger"></i>
+          <i class="fas fa-ellipsis-h hamburger"></i>
         </button>
         <span class="ml-auto collapse navbar-collapse" id="nabvar-menu">
           <% if user_signed_in? %>
@@ -47,7 +47,13 @@
     <script>
       $(document).ready(function(){
         $('.navbar-toggler').on('click', function(){
-          $('.navbar-toggler').toggleClass('active');
+          if($('.navbar-toggler').hasClass('fas ellipsis-h')){
+            $('.hamburger').toggleClass('fas fa-ellipsis-h');
+            $('.hamburger').toggleClass('far fa-times');
+          }else{
+            $('.hamburger').toggleClass('far fa-times');
+            $('.hamburger').toggleClass('fas fa-ellipsis-h');
+          }
         });
       });
     </script>
