@@ -18,12 +18,12 @@
         <% end %>
         <button class="navbar-toggler" type="button"
           data-toggle="collapse"
-          data-target="#nabvar-menu"
-          aria-controls="nabvar-menu"
+          data-target="#navbar-menu"
+          aria-controls="navbar-menu"
           aria-label="Toggle navigation">
           <i class="fas fa-ellipsis-h hamburger"></i>
         </button>
-        <span class="ml-auto collapse navbar-collapse" id="nabvar-menu">
+        <span class="ml-auto collapse navbar-collapse" id="navbar-menu">
           <% if user_signed_in? %>
            <div class="ml-auto">
               <li class="nav-item list-unstyled">
@@ -45,17 +45,20 @@
     </header>
 
     <script>
-      $(document).ready(function(){
-        $('.navbar-toggler').on('click', function(){
-          if($('.navbar-toggler').hasClass('fas ellipsis-h')){
-            $('.hamburger').toggleClass('fas fa-ellipsis-h');
-            $('.hamburger').toggleClass('far fa-times');
-          }else{
-            $('.hamburger').toggleClass('far fa-times');
-            $('.hamburger').toggleClass('fas fa-ellipsis-h');
-          }
-        });
+      // $(document).ready(function(){
+      $('.navbar-toggler').on('click', function(event){
+        $('#navbar-menu').toggleClass('active');
+        event.preventDefault();
+        const $hamburger = $(this).find('.hamburger')
+        if($hamburger.hasClass('fas fa-ellipsis-h')){
+          $hamburger.toggleClass('fas fa-ellipsis-h');
+          $hamburger.toggleClass('fa fa-times');
+        } else {
+          $hamburger.toggleClass('fa fa-times');
+          $hamburger.toggleClass('fas fa-ellipsis-h');
+        }
       });
+      // });
     </script>
 
     <% if flash[:notice] %>
