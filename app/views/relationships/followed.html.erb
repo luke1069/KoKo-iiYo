@@ -6,41 +6,51 @@
     <div class="col-2 col-md-1" style="height: 1px;"></div>
 
     <div class="col-10 col-md-11 bg-light my-2 border mx-auto">
-      <h3><%= @user.name %>さん</h3>
+      <h3><%= @user.name %></h3>
       <br>
       <h3>フォロワー( <%= @user.followers.count %> )</h3>
       <% if @user.followers.exists? %>
         <table class="table table-hover">
-          <% @users.each do |user|%>
+          <thead>
             <tr>
-              <td>
-                <%= link_to user_path(user), class:"text-dark" do %>
-                  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50", class:"border" %>
-                  <%= user.name %>さん
-                <% end %>
-              </td>
-              <td>
-                <%= user.mybike %>
-              </td>
-              <td>
-                <%= link_to user_path(user), class:"text-dark" do %>
-                  投稿数 <strong><%= user.posts.count %></strong>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to user_following_path(user), class:"text-dark" do %>
-                  フォロー <strong><%= user.followings.count %></strong>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to user_followed_path(user), class:"text-dark" do %>
-                  フォロワー <strong><%= user.followers.count %></strong>
-                <% end %>
-              </td>
-              <td>
-                <%= render "relationships/follow", user: user %>
-              </td>
+              <td>アカウント</td>
+              <td>投稿数</td>
+              <td>フォロー</td>
+              <td>フォロワー</td>
+              <td></td>
             </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user|%>
+              <tr>
+                <td>
+                  <%= link_to user_path(user), class:"text-dark" do %>
+                    <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50", class:"border" %>
+                    <div>
+                      <%= user.name %>
+                    </div>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to user_path(user), class:"text-dark" do %>
+                    <strong><%= user.posts.count %></strong>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to user_following_path(user), class:"text-dark" do %>
+                    <strong><%= user.followings.count %></strong>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to user_followed_path(user), class:"text-dark" do %>
+                    <strong><%= user.followers.count %></strong>
+                  <% end %>
+                </td>
+                <td>
+                  <%= render "relationships/follow", user: user %>
+                </td>
+              </tr>
+            </tbody>
           <% end %>
         </table>
       <% else %>
