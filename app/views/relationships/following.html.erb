@@ -1,51 +1,38 @@
 <%= render "homes/sidebar" %>
 
+<%= render "homes/sidebar" %>
+
 <div class="container-fluid">
   <div class="row">
 
     <div class="col-2 col-md-1" style="height: 1px;"></div>
 
-    <div class="col-10 col-md-11 m-2 mx-auto">
+    <div class="col-10 col-md-8 m-2 mx-auto">
       <h3><%= @user.name %></h3>
       <br>
       <h3>フォロー( <%= @user.followings.count %> )</h3>
+      <div class="mx-auto my-2">
+        <%= paginate @users %>
+      </div>
       <% if @user.followings.exists? %>
         <table class="table table-hover bg-light">
-          <thead>
-            <tr>
-              <td>アカウント</td>
-              <td>投稿数</td>
-              <td>フォロー</td>
-              <td>フォロワー</td>
-              <td></td>
-            </tr>
-          </thead>
           <tbody>
             <% @users.each do |user|%>
               <tr>
                 <td>
                   <%= link_to user_path(user), class:"text-dark" do %>
                     <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50", class:"border" %>
-                    <div>
+                    <span>
                       <%= user.name %>
-                    </div>
+                    </span>
                   <% end %>
                 </td>
-                <td>
-                  <%= link_to user_path(user), class:"text-dark" do %>
-                    <strong><%= user.posts.count %></strong>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to user_following_path(user), class:"text-dark" do %>
-                    <strong><%= user.followings.count %></strong>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to user_followed_path(user), class:"text-dark" do %>
-                    <strong><%= user.followers.count %></strong>
-                  <% end %>
-                </td>
+                <!--<td>-->
+                <!--  % if current_user.id != user.id %>-->
+                <!--    %= render "messages/message_btn", user: user, haveRoom: @haveRoom, roomId: @roomId, entry: @entry %>-->
+                <!--  % else %>-->
+                <!--  % end %>-->
+                <!--</td>-->
                 <td>
                   <%= render "relationships/follow", user: user %>
                 </td>
@@ -56,6 +43,9 @@
       <% else %>
         <p>ユーザーはいません。</p>
       <% end %>
+      <div class="mx-auto my-2">
+        <%= paginate @users %>
+      </div>
     </div>
 
   </div>

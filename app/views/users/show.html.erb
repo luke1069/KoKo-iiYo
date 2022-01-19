@@ -16,20 +16,7 @@
           <div class="row">
             <div class="col-12 text-right">
               <%= render "relationships/follow", user: @user %>
-              <% unless @user.id == current_user.id %>
-                <% if (current_user.is_followed_by @user) && (@user.is_followed_by current_user) %>
-                  <% if @haveRoom == true %>
-                    <%= link_to "DM画面", room_path(@roomId), class:"my-2 btn btn-sm btn-outline-secondary" %>
-                  <% else %>
-                    <%= form_with model:@room, local: true do |f| %>
-                      <%= fields_for @entry do |e| %>
-                        <%= e.hidden_field :user_id, value: @user.id %>
-                      <% end %>
-                      <%= f.submit "DM画面", class:"my-2 btn btn-sm btn-outline-secondary" %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              <% end %>
+              <%= render "messages/message_btn", user: @user, haveRoom: @haveRoom, roomId: @roomId, entry: @entry %>
               <% if @user.id == current_user.id %>
                 <%= link_to edit_user_path(@user), class:"my-2 btn btn-sm btn-outline-secondary" do %>
                   <i class="fas fa-user-cog">プロフィール編集</i>

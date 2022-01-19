@@ -99,7 +99,7 @@
                   <strong>投稿</strong><br>
                   <%= link_to user_path(post.user_id), 'data-turbolinks': false do %>
                     <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
-                    <%= post.user.name %>さん
+                    <%= post.user.name %>
                   <% end %>
                 </div>
               </div>
@@ -166,7 +166,7 @@
                   <strong>投稿</strong><br>
                   <%= link_to user_path(post.user_id), 'data-turbolinks': false do %>
                     <%= attachment_image_tag post.user, :profile_image, fallback: "no_image.jpg", class:"post_or_user_image border" %>
-                    <%= post.user.name %>さん
+                    <%= post.user.name %>
                   <% end %>
                 </div>
               </div>
