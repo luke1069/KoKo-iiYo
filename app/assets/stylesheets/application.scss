@@ -170,12 +170,26 @@ body {
   width: 100%;
   height: 700px;
 }
-// width_smartPhone
-.width_smartPhone {
-    display: none;
+
+// #box.inactive,
+// .introduction.inactive {
+//   display: none;
+// }
+
+#box2 {
+  width: 100%;
+  height: 200px;
+  // display: none;
 }
 
+// #box2.active {
+//   display: static;
+// }
+
 #images {
+  background-color: #000000;
+}
+#images2 {
   background-color: #000000;
 }
 

@@ -1,6 +1,7 @@
  <div class="row">
     <div class="col-2 col-md-1" style="height: 1px;"></div>
     <div class="top col-10 col-md-11 my-2">
+      <!--PC画面-->
       <div id="box">
         <div id="images">
           <div class="image1 img-fluid">
@@ -29,13 +30,56 @@
           <p><i class="far fa-arrow-alt-circle-down"></i>から<strong>「新着の投稿一覧」「人気の投稿一覧」</strong>を確認することができます。</p>
         <% end %>
       </div>
+      <!--PC画面-->
+      <!--スマホ画面-->
+      <div id="box2">
+        <div id="images2">
+          <div class="image1 img-fluid">
+          </div>
+          <div class="image2 img-fluid">
+          </div>
+          <div class="image3 img-fluid">
+          </div>
+          <div class="image4 img-fluid">
+          </div>
+          <div class="image5 img-fluid">
+          </div>
+        </div>
+      </div>
+      <!--スマホ画面-->
     </div>
   </div>
 
   <script>
-    // skippr
+    // skippr1
     $(document).on('turbolinks:load', function() {
       $("#images").skippr({
+        // スライドショーの変化 ("fade" or "slide")
+        transition : 'slide',
+        // 変化に係る時間(ミリ秒)
+        speed : 2000,
+        // easingの種類
+        easing : 'easeOutQuart',
+        // ナビゲーションの形("block" or "bubble")
+        navType : 'bubble',
+        // 子要素の種類("div" or "img")
+        childrenElementType : 'div',
+        // ナビゲーション矢印の表示(trueで表示)
+        arrows : true,
+        // スライドショーの自動再生(falseで自動再生なし)
+        autoPlay : true,
+        // 自動再生時のスライド切替間隔(ミリ秒)
+        autoPlayDuration : 5000,
+        // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+        keyboardOnAlways : true,
+        // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+        hidePrevious : false
+      });
+    });
+
+    // skippr2
+    $(document).on('turbolinks:load', function() {
+      $("#images2").skippr({
         // スライドショーの変化 ("fade" or "slide")
         transition : 'slide',
         // 変化に係る時間(ミリ秒)
@@ -63,7 +107,11 @@
     $(document).ready(function(){
       var windowSize = $(window).width();
       if (windowSize < 768){
-        $('#box, .introduction').addClass('width_smartPhone');
+        $('#box, .introduction').hide();
+        $('#box2').show();
+      }else if (windowSize >= 768){
+        $('#box, .introduction').show();
+        $('#box2').hide();
       }
     });
 
@@ -71,9 +119,11 @@
     $(window).on('resize', function(){
       var windowSize = $(window).width();
       if (windowSize < 768){
-        $('#box, .introduction').addClass('width_smartPhone');
+        $('#box, .introduction').hide();
+        $('#box2').show();
       }else if (windowSize >= 768){
-        $('#box, .introduction').removeClass('width_smartPhone');
+        $('#box, .introduction').show();
+        $('#box2').hide();
       }
     });
   </script>
