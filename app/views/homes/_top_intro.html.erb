@@ -46,6 +46,29 @@
           </div>
         </div>
       </div>
+      <div id="box2_title" class="text-center text-light">
+        <h5>バイク専用SNS</h5>
+          <h4><span class="title">「KoKo-iiYo」</span></h4>
+      </div>
+      <div id="box2_intro" class="text-center my-3">
+        <p>あなたのバイク、おすすめスポットの<br>写真を投稿しましょう。</p>
+        <% unless user_signed_in? %>
+          <p>
+            ご利用にはユーザー登録が必要となります。<br>
+            登録は<%= link_to new_user_registration_path do %>『こちら』<% end %>から
+          </p>
+        <% end %>
+        <p>
+          交通規則を遵守し、<br>
+          安全なバイクライフを過ごしましょう！
+        </p>
+        <% if user_signed_in? %>
+          <p>
+            <i class="far fa-arrow-alt-circle-down"></i><strong>「新着の投稿一覧」「人気の投稿一覧」</strong><br>
+            を確認することができます。
+          </p>
+        <% end %>
+      </div>
       <!--スマホ画面-->
     </div>
   </div>
@@ -108,10 +131,10 @@
       var windowSize = $(window).width();
       if (windowSize < 768){
         $('#box, .introduction').hide();
-        $('#box2').show();
+        $('#box2, #box2_title, #box2_intro').show();
       }else if (windowSize >= 768){
         $('#box, .introduction').show();
-        $('#box2').hide();
+        $('#box2, #box2_title, #box2_intro').hide();
       }
     });
 
@@ -120,10 +143,10 @@
       var windowSize = $(window).width();
       if (windowSize < 768){
         $('#box, .introduction').hide();
-        $('#box2').show();
+        $('#box2, #box2_title, #box2_intro').show();
       }else if (windowSize >= 768){
         $('#box, .introduction').show();
-        $('#box2').hide();
+        $('#box2, #box2_title, #box2_intro').hide();
       }
     });
   </script>
