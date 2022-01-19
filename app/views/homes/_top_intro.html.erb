@@ -1,0 +1,79 @@
+ <div class="row">
+    <div class="col-2 col-md-1" style="height: 1px;"></div>
+    <div class="top col-10 col-md-11 my-2">
+      <div id="box">
+        <div id="images">
+          <div class="image1 img-fluid">
+          </div>
+          <div class="image2 img-fluid">
+          </div>
+          <div class="image3 img-fluid">
+          </div>
+          <div class="image4 img-fluid">
+          </div>
+          <div class="image5 img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="introduction text-center text-light">
+        <div class="main-intro">
+          <h4>バイク専用SNS</h4>
+          <h4><span class="title">「KoKo-iiYo」</span>へようこそ</h4>
+        </div>
+        <p>あなたのバイク、おすすめスポットの写真を投稿しましょう。</p>
+        <% unless user_signed_in? %>
+          <p>ご利用にはユーザー登録が必要となります。登録は<%= link_to new_user_registration_path do %>『こちら』<% end %>から</p>
+        <% end %>
+        <p>交通規則を遵守し、安全なバイクライフを過ごしましょう！</p>
+        <% if user_signed_in? %>
+          <p><i class="far fa-arrow-alt-circle-down"></i>から<strong>「新着の投稿一覧」「人気の投稿一覧」</strong>を確認することができます。</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // skippr
+    $(document).on('turbolinks:load', function() {
+      $("#images").skippr({
+        // スライドショーの変化 ("fade" or "slide")
+        transition : 'slide',
+        // 変化に係る時間(ミリ秒)
+        speed : 2000,
+        // easingの種類
+        easing : 'easeOutQuart',
+        // ナビゲーションの形("block" or "bubble")
+        navType : 'bubble',
+        // 子要素の種類("div" or "img")
+        childrenElementType : 'div',
+        // ナビゲーション矢印の表示(trueで表示)
+        arrows : true,
+        // スライドショーの自動再生(falseで自動再生なし)
+        autoPlay : true,
+        // 自動再生時のスライド切替間隔(ミリ秒)
+        autoPlayDuration : 5000,
+        // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+        keyboardOnAlways : true,
+        // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+        hidePrevious : false
+      });
+    });
+
+    // 画面読み込み時
+    $(document).ready(function(){
+      var windowSize = $(window).width();
+      if (windowSize < 768){
+        $('#box, .introduction').addClass('width_smartPhone');
+      }
+    });
+
+    // 画面リサイズ
+    $(window).on('resize', function(){
+      var windowSize = $(window).width();
+      if (windowSize < 768){
+        $('#box, .introduction').addClass('width_smartPhone');
+      }else if (windowSize >= 768){
+        $('#box, .introduction').removeClass('width_smartPhone');
+      }
+    });
+  </script>
