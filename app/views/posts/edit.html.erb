@@ -14,7 +14,7 @@
         <%= form_with model:@post, local: true do |f| %>
           <div class="row">
             <div class="col-10 col-md-7">
-              <p class="my-2">写真選択</p>
+              <p class="my-2"><strong>写真選択</strong></p>
                 <%= f.attachment_field :image %>
               <p class="my-2">プレビュー</p>
                 <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"post_or_user_image my-2 border", id:"preview" %>
@@ -31,10 +31,10 @@
           </div>
           <div class="row">
             <div class="col-10 col-md-6">
-              <p class="my-2">タイトル</p>
+              <p class="my-2"><strong>タイトル</strong></p>
               <%= f.text_field :title %>
               <!--評価機能-->
-              <p class="my-2">評価</p>
+              <p class="my-2"><strong>評価</strong></p>
               <span id="edit-star-<%= @post.id %>" class="ml-3">
                 <%= f.hidden_field :rate, id: :review_star %>
               </span>
@@ -50,9 +50,9 @@
                 });
               </script>
               <!--ここまで-->
-              <p class="my-2">スポットの都道府県</p>
+              <p class="my-2"><strong>都道府県</strong></p>
                 <%= f.select :post_prefecture, Post.post_prefectures.keys.to_a, {}, class:"mb-3" %>
-              <p class="my-2">おすすめポイント</p>
+              <p class="my-2"><strong>おすすめポイント</strong></p>
                 <%= f.text_area :body, class:"text_area" %>
               <%= f.hidden_field :lat,:value => @post.lat, id: :lat %>
               <%= f.hidden_field :lng,:value => @post.lng, id: :lng %>
@@ -60,8 +60,8 @@
           </div>
 
           <div class="row">
-            <div class="col-10 col-md-7" >
-              <p>スポット検索</p>
+            <div class="col-12 col-md-12" >
+              <p class="my-2"><strong>スポット</strong></p>
               <input id="address" type="textbox" value="">
               <input type="button" value="検索" onclick="codeAddress()">
               (検索後、マーカーをドラック＆ドロップで調整)
