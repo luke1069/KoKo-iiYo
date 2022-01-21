@@ -16,6 +16,12 @@
             <div class="col-10 col-md-7">
               <p class="my-2"><strong>写真選択</strong></p>
                 <%= f.attachment_field :image %>
+                <button type="button" id="select_image_button">ファイルを選択</button>
+                <script>
+                  $(document).on('click', '#select_image_button', function(){
+                    $('#post_image').click();
+                  });
+                </script>
               <p class="my-2">プレビュー</p>
                 <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", class:"post_or_user_image my-2 border", id:"preview" %>
               <script>
@@ -59,7 +65,7 @@
           </div>
 
           <div class="row">
-            <div class="col-10 col-md-12" >
+            <div class="col-12" >
               <p class="my-2"><strong>スポット位置指定</strong></p>
               <input id="address" type="textbox" value="">
               <input type="button" value="検索" onclick="codeAddress()">

@@ -281,3 +281,13 @@ body {
 .search_area {
   width: 60%;
 }
+
+// 写真投稿のボタン修正
+#post_image {
+  display: none;
+}
+
+#select_image_button {
+  border: 1px solid black;
+  padding: 2px;
+}
