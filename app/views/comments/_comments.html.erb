@@ -19,6 +19,6 @@
 <div class="mt-5 commnets_create">
   <%= form_with(model:[post, comment], remote: true) do |f| %>
     <%= f.text_area :comment, row:'5', placeholder: "コメントを書き込みましょう。", class:"text_area"%>
-    <%= f.submit "送信" %>
+    <%= f.submit "送信", class:"btn btn-sm btn-secondary" %>
   <% end %>
 </div>
