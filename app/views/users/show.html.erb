@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <p><strong>アカウント名</strong><br><%= @user.name %>さん</p>
+          <p><strong>アカウント名</strong><br><%= @user.name %></p>
           <p><strong>お住まい</strong><br><%= @user.prefecture %></p>
           <p><strong>自己紹介</strong><br><%= safe_join(@user.introduction.to_s.split("\n"),tag(:br)) %></p>
           <p><strong>バイク熟練度</strong><br><%= @user.skill %></p>

@@ -19,6 +19,13 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// cssリセット
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 // 全体
 
 a:hover {
@@ -148,9 +155,10 @@ body {
 }
 
 .introduction {
-  width: 100%;
   position: absolute;
-  top: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 .main-intro {
@@ -177,9 +185,10 @@ body {
 }
 
 #box2_title {
-  width: 100%;
   position: absolute;
-  top: 20%;
+  top: 35%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
 #images {
