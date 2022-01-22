@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
@@ -28,5 +27,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:user_id, :room_id, :content).merge(user_id: current_user.id)
   end
-
 end

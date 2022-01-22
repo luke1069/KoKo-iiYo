@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
@@ -18,5 +17,4 @@ class FavoritesController < ApplicationController
     end
     # redirect_to request.referer　非同期通信化
   end
-
 end

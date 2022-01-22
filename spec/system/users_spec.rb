@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'user機能テスト', type: :system do
-
   describe 'ユーザーテスト' do
-
-    let!(:user) { create(:user, name:'hoge', email:'hoge@hoge.com', password:'hogehoge', introduction:'hoge') }
+    let!(:user) { create(:user, name: 'hoge', email: 'hoge@hoge.com', password: 'hogehoge', introduction: 'hoge') }
 
     describe 'ユーザー登録のテスト' do
       before do
         visit new_user_registration_path
       end
+
       context '画面表示のテスト' do
         it 'ユーザー登録画面のURLが正しいか' do
           expect(current_path).to eq('/users/sign_up')
@@ -27,6 +26,7 @@ RSpec.describe 'user機能テスト', type: :system do
           expect(page).to have_button '登録'
         end
       end
+
       context '登録処理のテスト' do
         it '登録成功後のリダイレクト先は正しいか' do
           fill_in 'user[name]', with: Faker::Name.name
@@ -57,6 +57,7 @@ RSpec.describe 'user機能テスト', type: :system do
         sign_in user
         visit edit_user_path(user)
       end
+
       context '画面表示のテスト' do
         it 'ユーザー編集画面のURLが正しいか' do
           expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
@@ -86,10 +87,11 @@ RSpec.describe 'user機能テスト', type: :system do
           expect(page).to have_link '', href: unsubscribe_path(user)
         end
       end
+
       context '編集処理のテスト' do
         it '編集成功後のリダイレクト先は正しいか' do
           click_button '完了'
-          expect(current_path).to eq('/users/'+ user.id.to_s)
+          expect(current_path).to eq('/users/' + user.id.to_s)
         end
         it '編集成功後にflashが表示されるか' do
           click_button '完了'
@@ -109,6 +111,7 @@ RSpec.describe 'user機能テスト', type: :system do
         sign_in user
         visit unsubscribe_path(user)
       end
+
       context '画面表示のテスト' do
         it '退会画面のURLが正しいか' do
           expect(current_path).to eq('/users/' + user.id.to_s + '/unsubscribe')
@@ -120,6 +123,7 @@ RSpec.describe 'user機能テスト', type: :system do
           expect(page).to have_link '', href: user_path(user)
         end
       end
+
       context '退会処理のテスト' do
         it '戻るボタンのリダイレクト先が正しいか' do
           click_link '戻る'
@@ -135,7 +139,5 @@ RSpec.describe 'user機能テスト', type: :system do
         end
       end
     end
-
   end
-
 end

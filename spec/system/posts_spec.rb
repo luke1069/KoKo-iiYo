@@ -3,22 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe 'post機能テスト', type: :system do
-
   describe '投稿テスト' do
-
     before do
       @user = FactoryBot.create(:user)
       sign_in @user
     end
-    let!(:post) { create(:post, user_id: @user.id, title:"hoge", body:"hoge", rate:5, lat:50, lng:50) }
+
+    let!(:post) { create(:post, user_id: @user.id, title: "hoge", body: "hoge", rate: 5, lat: 50, lng: 50) }
 
     describe 'トップのテスト' do
       before do
         visit root_path
       end
+
       context '画面表示のテスト' do
         it 'トップ画面に「ようこそ」が表示されているか' do
-          expect(page).to have_content'ようこそ'
+          expect(page).to have_content 'ようこそ'
         end
         it 'トップ画面の「root_path」がURL"/"であるか' do
           expect(current_path).to eq('/')
@@ -36,6 +36,7 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit new_post_path
       end
+
       context '画面表示のテスト' do
         it '「new_post_path」がURL"/posts/new"であるか' do
           expect(current_path).to eq('/posts/new')
@@ -44,10 +45,11 @@ RSpec.describe 'post機能テスト', type: :system do
           expect(page).to have_button '投稿'
         end
       end
+
       context '投稿処理のテスト' do
         it '投稿成功後にflashが表示されるか' do
-          fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
-          fill_in 'post[body]', with: Faker::Lorem.characters(number:10)
+          fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
+          fill_in 'post[body]', with: Faker::Lorem.characters(number: 10)
           find('#lng', visible: false).set 999999
           find('#lat', visible: false).set 999999
           find('#review_star', visible: false).set 5
@@ -60,8 +62,8 @@ RSpec.describe 'post機能テスト', type: :system do
           expect(current_path).to eq('/posts')
         end
         it '投稿後のリダイレクト先は正しいか' do
-          fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
-          fill_in 'post[body]', with: Faker::Lorem.characters(number:10)
+          fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
+          fill_in 'post[body]', with: Faker::Lorem.characters(number: 10)
           find('#lng', visible: false).set 999999
           find('#lat', visible: false).set 999999
           find('#review_star', visible: false).set 5
@@ -75,6 +77,7 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit posts_path
       end
+
       context '画面表示のテスト' do
         it '投稿情報が表示されているか' do
           expect(page).to have_content post.title
@@ -97,6 +100,7 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit post_path(post)
       end
+
       context '画面表示のテスト' do
         it '投稿情報が表示されているか' do
           expect(page).to have_content post.title
@@ -121,10 +125,11 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit edit_post_path(post)
       end
+
       context '画面表示のテスト' do
         it '投稿情報が表示されているか' do
-          expect(page).to have_field 'post[title]', with:post.title
-          expect(page).to have_field 'post[body]', with:post.body
+          expect(page).to have_field 'post[title]', with: post.title
+          expect(page).to have_field 'post[body]', with: post.body
           expect(page).to have_content post.image
         end
         it '投稿編集ボタンが表示されているか' do
@@ -134,10 +139,11 @@ RSpec.describe 'post機能テスト', type: :system do
           expect(page).to have_link '', href: post_path(post)
         end
       end
+
       context '編集処理のテスト' do
         it '編集成功後にflashが表示されるか' do
-          fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
-          fill_in 'post[body]', with: Faker::Lorem.characters(number:10)
+          fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
+          fill_in 'post[body]', with: Faker::Lorem.characters(number: 10)
           find('#lng', visible: false).set 999999
           find('#lat', visible: false).set 999999
           find('#review_star', visible: false).set 5
@@ -151,9 +157,9 @@ RSpec.describe 'post機能テスト', type: :system do
           expect(page).to have_content '入力してください'
           expect(current_path).to eq('/posts/1')
         end
-         it '編集後のリダイレクト先は正しいか' do
-          fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
-          fill_in 'post[body]', with: Faker::Lorem.characters(number:10)
+        it '編集後のリダイレクト先は正しいか' do
+          fill_in 'post[title]', with: Faker::Lorem.characters(number: 5)
+          fill_in 'post[body]', with: Faker::Lorem.characters(number: 10)
           find('#lng', visible: false).set 999999
           find('#lat', visible: false).set 999999
           find('#review_star', visible: false).set 5
@@ -164,7 +170,6 @@ RSpec.describe 'post機能テスト', type: :system do
           click_link '削除'
           expect(page).to have_current_path posts_path
         end
-
       end
     end
 
@@ -172,6 +177,7 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit search_index_posts_path
       end
+
       context '画面表示のテスト' do
         it '検索ボタンが表示されているか' do
           expect(page).to have_button '検索'
@@ -180,9 +186,10 @@ RSpec.describe 'post機能テスト', type: :system do
           expect(page).to have_field 'q[title_or_body_cont]'
         end
       end
+
       context '検索処理のテスト' do
         it '検索実行後、検索結果が表示されるか' do
-          fill_in 'q[title_or_body_cont]', with: Faker::Lorem.characters(number:10)
+          fill_in 'q[title_or_body_cont]', with: Faker::Lorem.characters(number: 10)
           click_button '検索'
           expect(page).to have_content '検索結果'
         end
@@ -193,6 +200,7 @@ RSpec.describe 'post機能テスト', type: :system do
       before do
         visit post_path(post)
       end
+
       context '画面表示のテスト' do
         it 'コメントの投稿画面があるか' do
           expect(page).to have_content 'コメントの投稿一覧'
@@ -214,7 +222,5 @@ RSpec.describe 'post機能テスト', type: :system do
       #   end
       # end
     end
-
   end
-
 end

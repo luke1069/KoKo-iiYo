@@ -9,7 +9,7 @@ RSpec.describe Message, 'messageモデルに関するテスト', type: :model do
     end
     context 'バリデーション確認' do
       it 'contentが空欄の場合にエラー表示されるか' do
-        message = Message.new(content:'')
+        message = Message.new(content: '')
         expect(message).to be_invalid
       end
     end
