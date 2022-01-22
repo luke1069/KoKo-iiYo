@@ -1,5 +1,5 @@
 # KoKo-iiYo
-「URL:https://koko-iiyo.com」
+URL:https://koko-iiyo.com
 
 ## サイト概要
 本サイトは、バイク乗りにターゲットを絞ったSNSサイトです。<br>
@@ -35,10 +35,10 @@ TwitterやInstagramなどSNSの普及によって、<br>
 * バイクに乗り始めた方で、ツーリング仲間を探す
 
 ## 設計書
-「URL:https://docs.google.com/spreadsheets/d/1mG_uRWKvemBcoTQ1kmyOQP8jVJ59rrqN/edit#gid=767290893」
+URL:https://docs.google.com/spreadsheets/d/1mG_uRWKvemBcoTQ1kmyOQP8jVJ59rrqN/edit#gid=767290893
 
 ## チャレンジ要素一覧
-「URL:https://docs.google.com/spreadsheets/d/1_nZNw80gumIePZDsJxNmLKVKe0N7sDXWNf1KvhiccfE/edit#gid=1605662446」
+URL:https://docs.google.com/spreadsheets/d/1_nZNw80gumIePZDsJxNmLKVKe0N7sDXWNf1KvhiccfE/edit#gid=1605662446
 
 ## 開発環境
 * OS:Linux(CentOS)
