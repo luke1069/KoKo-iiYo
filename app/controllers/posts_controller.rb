@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   # 検索投稿一覧
   def search_index
+    @posts = Post.all
     @q = Post.ransack(params[:q])
     @results = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(4)
     @check = params[:q]
