@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   # 検索投稿一覧
   def search_index
     @posts = Post.all
+    gon.posts = @posts
     @q = Post.ransack(params[:q])
     @results = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(4)
     @check = params[:q]
@@ -87,9 +88,11 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    if post.destroy
-      flash[:notice] = "投稿を削除しました。"
-      redirect_to posts_path
+    if current_user == post.user
+      if post.destroy
+        flash[:notice] = "投稿を削除しました。"
+        redirect_to posts_path
+      end
     else
       render :edit
     end

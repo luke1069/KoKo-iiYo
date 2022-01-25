@@ -12,6 +12,7 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  validates :image, presence: true
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 450 }
   validates :rate, numericality: {

@@ -20,6 +20,7 @@ ja:
       user:
         introduction: 自己紹介
       post:
+        image: 写真ファイル
         title: タイトル
         body: おすすめポイント
         rate: 評価
