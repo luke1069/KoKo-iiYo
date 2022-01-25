@@ -35,6 +35,8 @@
       var markersData = [];
         posts.forEach(function(post){
           var data = {
+            id: post.id,
+            image: post.image,
             name: post.title,
             lat: post.lat,
             lng: post.lng
@@ -53,7 +55,8 @@
           map: map
         });
         infoWindow[i] = new google.maps.InfoWindow({
-          content: markersData[i]['name'],
+          content: '<a href="/posts/' + markersData[i]['id'] + '">' + markersData[i]['name'] + '</a>',
+          // '<br>' + '<img src="/public/uploads/' + markersData[i]['image'] + '.jpg">',
           disableAutoPan: true
         });
         markerEvent(i);
