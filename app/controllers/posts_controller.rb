@@ -55,6 +55,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    gon.post = @post
     unless ImpressionsCount.find_by(user_id: current_user.id, post_id: @post.id)
       current_user.impressions_counts.create(post_id: @post.id)
     end
@@ -63,6 +64,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    gon.post = @post
     if @post.user_id == current_user.id
       render :edit
     else
