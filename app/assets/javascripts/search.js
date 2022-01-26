@@ -1,7 +1,6 @@
   var marker_new
   var geocoder
   var aft
-
   var map
   var marker = [];
   var infoWindow = [];
